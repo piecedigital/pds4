@@ -1,0 +1,8 @@
+This is the process that I went through to redesign the <a href='https://merakinaturalhair.com'>Meraki Natural Hair</a> website, from wireframes to mockups.
+<br><br>
+I went for the "boostrap style", again without overusing whitespace. One of the main issues that needed to be resolved from <a href='https://www.behance.net/gallery/21262973/Meraki-Natural-Hair-web-design-and-development'>the first website</a> was the responsive design. It had none... well, almost none. The mobile support was an after thought as I was very early in my development experience and hadn't explored responsive design yet. I used jQuery to transform each section of the site accordingly in order to achieve a somewhat mobile friendly viewing experience. This time I solved it easily with media queries and JavaScript.
+<br><br>
+The second issue I needed to solve was a way to display the portfolio easily. The old one was, again, due to my lack of knowledge, static and annoying manage. Basically, to add new content meant changing the HTML.<br>
+This time I created a small JS script to contain everything to one page, so now there are only five pages total for the website.
+<br><br>
+Much needed improvments, if I do say so myself.

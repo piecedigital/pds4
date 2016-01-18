@@ -1,0 +1,219 @@
+*, *:before, *:after {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+.cite {
+  color: #e8f8ff;
+  padding: .5em;
+  display: block;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #00a2eb;
+}
+
+.col-2 {
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+#box {
+  background: #9be0ff;
+  width: 20em;
+  margin: 2em auto;
+}
+
+#tabs {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+#tabs li {
+  position: relative;
+  display: inline-block;
+  color: #e8f8ff;
+  background: #017ab1;
+  width: 33.33333333333333333333%;
+  padding: 1.5em 0;
+  text-align: center;
+  font-weight: bold;
+  box-shadow: -1.05em 0 0 -1em #004B6E;
+  cursor: pointer;
+}
+#tabs li:first-child {
+  box-shadow: 0 0 0 0 transparent;
+}
+#tabs li.selected:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  -ms-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -webkit-transform: translate(-50%, 0);
+  transform: translate(-50%, 0);
+  border-top: 1em solid #017ab1;
+  border-left: 1em solid transparent;
+  border-right: 1em solid transparent;
+}
+#tabs li:hover {
+  background: #004B6E;
+}
+#tabs li:hover.selected:after {
+  border-top: 1em solid #004B6E;
+}
+
+#listed-search {
+  padding: 1em;
+  text-align: center;
+}
+#listed-search input, #listed-search button {
+  border: none;
+  padding: .3em;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+#listed-search input {
+  border-radius: 1em;
+  background: white;
+}
+#listed-search button {
+  border-radius: 1em;
+  background: #e8f8ff;
+  font-size: 14px;
+  padding: .3em 1em;
+}
+
+#header {
+  display: block;
+  padding: 0;
+  margin: 0;
+}
+#header span {
+  position: relative;
+  display: inline-block;
+  color: #e8f8ff;
+  background: #017ab1;
+  width: 100%;
+  padding: 1.5em 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+#unlisted-search {
+  padding: 1em;
+  text-align: center;
+}
+#unlisted-search input, #unlisted-search button {
+  border: none;
+  padding: .3em;
+  margin: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+#unlisted-search input {
+  border-radius: 1em 0 0 1em;
+  background: white;
+}
+#unlisted-search button {
+  border-radius: 0 1em 1em 0;
+  background: #e8f8ff;
+  border-left: 1px solid #004B6E;
+  font-size: 14px;
+  padding: .3em 1em;
+}
+
+#user-list, #user-list2 {
+  margin: 0;
+  padding: 0;
+}
+#user-list li, #user-list2 li {
+  list-style: none;
+  position: relative;
+}
+#user-list li a, #user-list2 li a {
+  position: relative;
+  display: block;
+  color: #e8f8ff;
+  text-decoration: none;
+  width: 100%;
+  background: #017ab1;
+  padding: .5em;
+}
+#user-list li a img, #user-list2 li a img {
+  width: 5em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+#user-list li a span, #user-list2 li a span {
+  display: block;
+}
+#user-list li a span.name, #user-list2 li a span.name {
+  position: absolute;
+  top: 1em;
+  left: 6em;
+}
+#user-list li a span.title, #user-list2 li a span.title {
+  position: absolute;
+  top: 2.8em;
+  left: 7.5em;
+  font-size: .8em;
+  opacity: .8;
+  width: 14em;
+}
+#user-list li a span.game, #user-list2 li a span.game {
+  position: absolute;
+  top: 8em;
+  right: 1.5em;
+  font-size: .6em;
+  opacity: .8;
+}
+#user-list li a span.status, #user-list2 li a span.status {
+  position: absolute;
+  top: 2em;
+  right: 1em;
+  border-radius: 100%;
+  padding: 0 .3em;
+}
+#user-list li a span.status.online, #user-list2 li a span.status.online {
+  box-shadow: 0 0 0 4px lime;
+  color: lime;
+}
+#user-list li a span.status.offline, #user-list2 li a span.status.offline {
+  box-shadow: 0 0 0 4px red;
+  color: red;
+}
+#user-list li a:hover, #user-list2 li a:hover {
+  background: #004B6E;
+}
+
+#user-list2 #add {
+  position: absolute;
+  top: 2.3em;
+  right: -3em;
+  border-radius: 100%;
+  padding: .2em .5em .3em;
+  box-shadow: 0 0 0 4px white;
+  color: white;
+  cursor: pointer;
+}
+#user-list2 #add:after {
+  content: "\2716";
+  -ms-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+@media screen and (max-width: 800px) {
+  col-2 {
+    display: block;
+    width: 100%;
+  }
+}

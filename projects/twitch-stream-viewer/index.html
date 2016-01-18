@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html >
+	<head>
+		<title>Custom New Tab</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/angular-1.3.x.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/angmod.js"></script>
+	</head>
+	<body>
+		<a class="cite" href="http://piecedigital.github.io/" target="_blank">Piece Digital</a>
+		<div class="full-height justify-center">
+			<div class="col-2">
+			  <div id="box">
+			    <ul id="tabs">
+			      <li id="all-tab" class="selected">ALL</li><!--
+			      --><li id="online-tab">ONLINE</li><!--
+			      --><li id="offline-tab">OFFLINE</li>
+			    </ul>
+			    <div id="reload">
+			    	Reload
+			    </div>
+			    <form id="listed-search">
+			      <input type="text" name="input" value="" selected />
+			    </form>
+			    <ul id="user-list">
+
+			    </ul>
+			  </div>
+			</div><!--
+			--><div class="col-2">
+			  <!-- look up unlisted user -->
+			  <div id="box">
+			    <div id="header">
+			      <span>Add A New User</span>
+			    </div>
+			    <form id="unlisted-search">
+			      <input type="text" name="input" value="" selected /><!--
+			      --><button type="submit" name="submit">&#x2713;</button/>
+			    </form>
+			    <ul id="user-list2">
+
+			    </ul>
+			  </div>
+			</div>
+			<script type="text/javascript" src="js/main.js"></script>
+		</div>
+		<div id="embed" class="">
+			<div id="backdrop" class=""></div>
+			<div id="close"></div><div id="hide"></div><div id="theater"></div><div id="hide-chat"></div>
+			<div id="embed-area" class="full-height">
+				<div id="video" class="half-height"></div><!--
+				--><div id="chat" class="half-height"></div>
+			</div>
+		</div>
+	</body>
+</html>

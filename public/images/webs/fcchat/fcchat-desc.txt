@@ -1,0 +1,2 @@
+<a href='http://free-code-chat.herokuapp.com'>Free Code Chat</a> is an open-source project created by me and a few other "code campers" over at <a href='http://freecodecamp.com/'>Free Code Camp</a>.<br>
+My hopes for its future are that it can be used by Free Code Camp officially in some way. Regardless, this project is my most proud currently.

@@ -1,0 +1,42 @@
+<html>
+	<head>
+		<title>Twitch Streamer List</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no" />
+	</head>
+	<body>
+		<a class="cite" href="http://piecedigital.github.io/">Piece Digital</a>
+		<div class="col-2">
+		  <div id="box">
+		    <ul id="tabs">
+		      <li id="all-tab" class="selected">ALL</li><!--
+		      --><li id="online-tab">ONLINE</li><!--
+		      --><li id="offline-tab">OFFLINE</li>
+		    </ul>
+		    <form id="listed-search">
+		      <input type="text" name="input" value="" selected />
+		    </form>
+		    <ul id="user-list">
+
+		    </ul>
+		  </div>
+		</div><!--
+		--><div class="col-2">
+		  <!-- look up unlisted user -->
+		  <div id="box">
+		    <div id="header">
+		      <span>Add A New User</span>
+		    </div>
+		    <form id="unlisted-search">
+		      <input type="text" name="input" value="" selected /><!--
+		      --><button type="submit" name="submit">&#x2713;</button/>
+		    </form>
+		    <ul id="user-list2">
+
+		    </ul>
+		  </div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>

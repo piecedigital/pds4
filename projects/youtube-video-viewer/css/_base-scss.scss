@@ -1,0 +1,38 @@
+$midBlue: #00a2eb;
+$dimBlue: #017ab1;
+$darkBlue: #004B6E;
+$lightBlue: #9be0ff;
+$veryLightBlue: #e8f8ff;
+@mixin transformT($val...) {
+	-ms-transform: translate($val);
+	-moz-transform: translate($val);
+	-webkit-transform: translate($val);
+	transform: translate($val);
+}
+@mixin transformR($val...) {
+	-ms-transform: rotate($val);
+	-moz-transform: rotate($val);
+	-webkit-transform: rotate($val);
+	transform: rotate($val);
+}
+@mixin transformS($val) {
+	-ms-transform: scale($val);
+	-moz-transform: scale($val);
+	-webkit-transform: scale($val);
+	transform: scale($val);
+}
+@mixin media-max($val) {
+	@media screen and (max-width: $val) {
+		@content;
+	}
+}
+*, *:before, *:after {
+  font-size: 16px;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+.cite {
+  color: $veryLightBlue;
+  padding: .5em;
+  display: block;
+}

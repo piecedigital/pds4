@@ -1,0 +1,498 @@
+$midBlue: #00a2eb;
+$dimBlue: #017ab1;
+$lightBlue: #9be0ff;
+$veryLightBlue: #e8f8ff;
+$darkBlue: #013D58;
+
+// necessary mixins
+@mixin border-radius($val...) {
+  -ms-border-radius: $val;
+  -moz-border-radius: $val;
+  -webkit-border-radius: $val;
+  border-radius: $val;
+}
+@mixin box-shadow($val...) {
+  -ms-box-shadow: $val;
+  -moz-box-shadow: $val;
+  -webkit-box-shadow: $val;
+  box-shadow: $val;
+}
+@mixin transformR($val...) {
+  -ms-transform: rotate($val);
+  -moz-transform: rotate($val);
+  -webkit-transform: rotate($val);
+  transform: rotate($val);
+}
+@mixin transformS($val) {
+  -ms-transform: scale($val);
+  -moz-transform: scale($val);
+  -webkit-transform: scale($val);
+  transform: scale($val);
+}
+@mixin transformRS($rot, $scale...) {
+  -ms-transform: rotate( $rot ) scale( $scale );
+  -moz-transform: rotate( $rot ) scale( $scale );
+  -webkit-transform: rotate( $rot ) scale( $scale );
+  transform: rotate( $rot ) scale( $scale );
+}
+@mixin transformT($val...) {
+  -ms-transform: translate($val);
+  -moz-transform: translate($val);
+  -webkit-transform: translate($val);
+  transform: translate($val);
+}
+@mixin transformST($val1, $val2...) {
+  -ms-transform: scale($val1) translate($val2);
+  -moz-transform: scale($val1) translate($val2);
+  -webkit-transform: scale($val1) translate($val2);
+  transform: scale($val1) translate($val2);
+}
+@mixin media-min($val) {
+  @media screen and (min-width: $val) {
+    @content;
+  }
+}
+@mixin media-max($val) {
+  @media screen and (max-width: $val) {
+    @content;
+  }
+}
+
+///////////////////// Main Styling /////////////////////////////////
+/*///////////////////////// prerequisites /////////////////////////*/
+/* css resets */
+*, *:before, *:after {
+  font-family: sans-serif;
+  transition: all .2s ease-in-out;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+a {
+  text-decoration: none;
+  color: $darkBlue;
+  font-weight: bold;
+}
+
+body {
+  margin: 0;
+  background: $midBlue;
+  height: 99vh;
+}
+.col-2 {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+.col-3 {
+  display: inline-block;
+  width: 33.333333333333%;
+}
+.full-height {
+  height: 100%;
+}
+.half-height {
+  height: 50%;
+}
+.justify-center {
+  text-align: center;
+}
+.search-text {
+  color: $veryLightBlue;
+  font-weight: bold;
+  display: block;
+}
+#search {
+  padding: 1em;
+  text-align: center;
+  & input, & button {
+    border: none;
+    padding: .3em;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  & input {
+    border-radius: 1em 0 0 1em;
+    background: white;
+  }
+  & button {
+    border-radius: 0 1em 1em 0;
+    background: $veryLightBlue;
+    border-left: 1px solid $darkBlue;
+    font-size: 14px;
+    padding: .3em 1em;
+  }
+}
+#favs {
+  vertical-align: middle;
+  position: relative;
+  top: 50%;
+  max-width: 20em;
+  margin: 0 auto;
+  @include transformT(0, -50%);
+}
+.fav-box {
+  display: inline-block;
+  background: $dimBlue;
+  border-radius: .5em;
+  margin: .3em;
+  width: 6em;
+  height: 6em;
+  padding: .5em;
+  vertical-align: top;
+  color: $veryLightBlue;
+  & span {
+    display: block;
+    position: relative;
+    top: 50%;
+    @include transformT(0, -50%);
+  }
+  &:hover {
+    background: $darkBlue;
+  }
+}
+.cite {
+  color: $veryLightBlue;
+  padding: .5em;
+  display: block;
+}
+#box {
+  background: $lightBlue;
+  width: 20em;
+  margin: 2em auto;
+}
+#tabs {
+  display: block;
+  padding: 0;
+  margin: 0;
+  & li {
+    position: relative;
+    display: inline-block;
+    color: $veryLightBlue;
+    background: $dimBlue;
+    width: 33.33333333333333333333%;
+    padding: 1.5em 0;
+    text-align: center;
+    font-weight: bold;
+    box-shadow:  -1.05em 0 0 -1em $darkBlue;
+    cursor: pointer;
+    &:first-child {
+      box-shadow: 0 0 0 0 transparent;
+    }
+    &.selected:after {
+      content: "";
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      @include transformT(-50%, 0);
+      border-top: 1em solid $dimBlue;
+      border-left: 1em solid transparent;
+      border-right: 1em solid transparent;
+    }
+    &:hover {
+      background: $darkBlue;
+      &.selected:after {
+        border-top: 1em solid $darkBlue;
+      }
+    }
+  }
+}
+#reload {
+  display: inline-block;
+  padding: .4em.7em;
+  border-radius: 2em;
+  background-color: $darkBlue;
+  color: $veryLightBlue;
+  cursor: pointer;
+}
+#listed-search {
+  display: inline-block;
+  padding: 1em;
+  text-align: center;
+  & input, & button {
+    border: none;
+    padding: .3em;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  & input {
+    border-radius: 1em;
+    background: white;
+  }
+  & button {
+    border-radius: 1em;
+    background: $veryLightBlue;
+    font-size: 14px;
+    padding: .3em 1em;
+  }
+}
+#header {
+  display: block;
+  padding: 0;
+  margin: 0;
+  & span {
+    position: relative;
+    display: inline-block;
+    color: $veryLightBlue;
+    background: $dimBlue;
+    width: 100%;
+    padding: 1.5em 0;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+#unlisted-search {
+  padding: 1em;
+  text-align: center;
+  & input, & button {
+    border: none;
+    padding: .3em;
+    margin: 0;
+    text-align: center;
+    vertical-align: middle;
+  }
+  & input {
+    border-radius: 1em 0 0 1em;
+    background: white;
+  }
+  & button {
+    border-radius: 0 1em 1em 0;
+    background: $veryLightBlue;
+    border-left: 1px solid $darkBlue;
+    font-size: 14px;
+    padding: .3em 1em;
+  }
+}
+#user-list, #user-list2 {
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  & li {
+    list-style: none;
+    position: relative;
+    & a {
+      position: relative;
+      display: block;
+      color: $veryLightBlue;
+      text-decoration: none;
+      width: 100%;
+      background: $dimBlue;
+      padding: .5em;
+      height: 6em;
+      & img {
+        width: 5em;
+        border-radius: 100%;
+        vertical-align: middle;
+      }
+      & span {
+        display: block;
+        &.name {
+          position: absolute;
+          top: 1em;
+          left: 6em;
+        }
+        &.title {
+          position: absolute;
+          top: 2.8em;
+          left: 7.5em;
+          font-size: .8em;
+          opacity: .8;
+          width: 14em;
+        }
+        &.game {
+          position: absolute;
+          top: 8em;
+          right: 1.5em;
+          font-size: .6em;
+          opacity: .8;
+        }
+        &.status {
+          position: absolute;
+          top: 2em;
+          right: 1em;
+          border-radius: 100%;
+          padding: 0 .3em;
+          &.online {
+            box-shadow: 0 0 0 4px rgba(0, 255, 0, 1);
+            color: rgba(0, 255, 0, 1);
+          }
+          &.offline {
+            box-shadow: 0 0 0 4px rgba(255, 0, 0, 1);
+            color: rgba(255, 0, 0, 1);
+          }
+        }
+      }
+      &:hover {
+        background: $darkBlue;
+      }
+    }
+  }
+}
+#user-list2 #add {
+  position: absolute;
+  top: 2.3em;
+  right: -3em;
+  border-radius: 100%;
+  padding: .2em .5em .3em;
+  box-shadow: 0 0 0 4px white;
+  color: white;
+  cursor: pointer;
+  &:after {
+    content: "\2716";
+    @include transformR(45deg);
+  }
+}
+@include media-max(800px) {
+  col-2 {
+    display: block;
+    width: 100%;
+  }
+}
+#backdrop {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+  &:not(.backdrop) {
+    pointer-events: none;
+    background: transparent;
+  }
+}
+.backdrop {
+  pointer-events: auto;
+}
+#embed {
+  position: fixed;
+  right: 0;
+  width: 100%;
+  max-width: 800px;
+  height: 97%;
+  background: $dimBlue;
+  &:not(.open-embed) {
+    top: 100%;
+    @include transformT(0, -0em);
+  }
+  & #close {
+    height: 2em;
+    display: inline-block;
+    background: $darkBlue;
+    padding: .3em;
+    cursor: pointer;
+    &:after {
+      content: "\2716";
+      color: $veryLightBlue;
+    }
+    &:hover {
+      background: $dimBlue;
+    }
+  }
+  & #hide {
+    height: 2em;
+    display: inline-block;
+    background: $darkBlue;
+    padding: .3em;
+    cursor: pointer;
+    vertical-align: top;
+    &:after {
+      content: "\2935";
+      color: $veryLightBlue;
+    }
+    &:hover {
+      background: $dimBlue;
+    }
+  }
+  & #theater {
+    height: 2em;
+    display: inline-block;
+    background: $darkBlue;
+    padding: .3em;
+    cursor: pointer;
+    vertical-align: top;
+    &:after {
+      content: "\2948";
+      color: $veryLightBlue;
+    }
+    &:hover {
+      background: $dimBlue;
+    }
+  }
+  & #hide-chat {
+    height: 2em;
+    display: inline-block;
+    background: $darkBlue;
+    padding: .3em;
+    cursor: pointer;
+    vertical-align: top;
+    &:after {
+      content: "\2986";
+      color: $veryLightBlue;
+    }
+    &:hover {
+      background: $dimBlue;
+    }
+  }
+}
+.open-embed {
+  top: 0%;
+}
+.embed-partial {
+  @include transformT(0, -2em);
+  top: 100%;
+}
+
+@include media-max(800px) {
+  .col-2 {
+    display: block;
+    width: 100%;
+  }
+}
+.theater {
+  & #embed {
+    max-width: 100%;
+    height: 97%;
+    & #video {
+      vertical-align: top;
+      width: 100%;
+      height: 98%;
+      display: inline-block;
+      padding: 0 18em 0 0;
+    }
+    & #chat {
+      vertical-align: top;
+      width: 18em;
+      height: 98%;
+      position: fixed;
+      top: 2em;
+      right: 0;
+      display: inline-block;
+    }
+  }
+}
+.hide-chat {
+  & #embed {
+    & #video {
+      width: 100%;
+      padding: 0;
+    }
+    & #chat {
+      display: none;
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  .theater {
+    & #embed {
+      & #video {
+        width: 100%;
+        padding: 0;
+      }
+      & #chat {
+        display: none;
+      }
+    }
+  }
+}

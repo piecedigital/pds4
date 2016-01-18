@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="youtubeApp">
+	<head>
+		<title>YouTube Video Viewer</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<script type="text/javascript" src="js/angular-1.3.x.min.js"></script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+	</head>
+	<body>
+		<a class="cite" target="_blank" href="http://piecedigital.github.io">Piece Digital</a>
+	  <div ng-controller="loadData as ld">
+	    <section>
+	      <div class="page-wrap justify-center">
+	        <form ng-submit="getChannel()">
+	          <span class="header-text">Enter A YouTube Channel Name</span>
+	          <input type="text" ng-model="channelString" name="channel" id="input" /><button>&#x2713;</button>
+	        </form>  
+	      </div>
+	    </section>
+	    <section>
+	      <div class="page-wrap">
+	        <div class="col-2 justify-left">
+	          <a href="" id="prev" ng-click"prevPage()">Prev</a>
+	        </div><div class="col-2 justify-right">
+	          <a href="" id="next" ng-click"nextPage()">Next</a>
+	        </div>
+	      </div>
+	    </section>
+	    <section>
+	      <div class="page-wrap justify-center">
+	        <ul id="items-list">
+	          <li class="col-4-to-1" ng-repeat="item in items">
+	            <a href="https://youtube.com/watch?v={{item.snippet.resourceId.videoId}}" target="_blank" data-id="{{item.snippet.resourceId.videoId}}">
+	              <div class="thumbnail">
+	                <img src="{{item.snippet.thumbnails.standard.url}}" alt="" />
+	              </div><!--
+	              --><span class="title">{{item.snippet.title}}</span>
+	            </a>
+	          </li>
+	        </ul>
+	      </div>
+	    </section>
+	  </div>
+	</body>
+</html>

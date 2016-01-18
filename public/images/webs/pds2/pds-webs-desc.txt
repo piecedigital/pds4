@@ -1,0 +1,3 @@
+This is the process that I went through to redesign my website, from wireframes to mockups.
+<br><br>
+I like the bootstrap style, but I have an aversion for the overuse of white space. I like the content to be reach quickly. It's the most important part of a website, it's what people come for. So I designed around delivering the content quickly.

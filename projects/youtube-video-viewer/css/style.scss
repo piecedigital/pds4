@@ -1,0 +1,144 @@
+@import "_base-css";
+body {
+  background: $midBlue;
+}
+section {
+  padding: 2em 0;
+}
+.page-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.justify-left {
+  text-align: left;
+}
+.justify-center {
+  text-align: center;
+}
+.justify-right {
+  text-align: right;
+}
+.header-text {
+  display: block;
+  font-weight: bold;
+  font-size: 2em;
+  color: $veryLightBlue;
+  margin: 0 0 1em;
+}
+#items-list {
+  padding: 0;
+  margin: 0;
+  & li {
+    padding: .5em;
+    background: $lightBlue;
+    border-radius: .5em;
+    margin: 0 0 2em;
+    vertical-align: top;
+    & a {
+      text-decoration: none;
+    }
+  }
+}
+.col-2 {
+  display: inline-block;
+  width: 50%;
+}
+.col-4-to-1 {
+  display: inline-block;
+  width: 25%;
+}
+form {
+  & input {
+    vertical-align: top;
+    border-radius: .4em 0 0 .4em;
+    border: none;
+    padding: .5em;
+    background: $veryLightBlue;
+  }
+  & button {
+    vertical-align: top;
+    border-radius: 0 .4em .4em 0;
+    border: none;
+    background: $dimBlue;
+    color: $veryLightBlue;
+    padding: .54em .5em;
+    cursor: pointer;
+  }
+}
+#prev {
+  background: $veryLightBlue;
+  display: inline-block;
+  padding: .5em;
+  border-radius: 1em .5em .5em 1em;
+  cursor: pointer;
+  text-decoration: none;
+  color: $darkBlue;
+  text-decoration: none;
+  color: $darkBlue;
+}
+#next {
+  background: $veryLightBlue;
+  display: inline-block;
+  padding: .5em;
+  border-radius: .5em 1em 1em .5em;
+  cursor: pointer;
+  text-decoration: none;
+  color: $darkBlue;
+  text-decoration: none;
+  color: $darkBlue;
+}
+.thumbnail {
+  display: block;
+  vertical-align: top;
+  & img {
+    max-width: 100%;
+  }
+}
+.title {
+  display: block;
+  vertical-align: top;
+  color: $dimBlue;
+  font-weight: bold;
+}
+.embed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
+  height: 90%;
+  @include transformT(-50%, -50%);
+}
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .7);
+}
+.close {
+  cursor: pointer;
+  color: $veryLightBlue;
+  position: fixed;
+  top: 1em;
+  right: 1em;
+  padding: .2em .5em .3em;
+  box-shadow: 0 0 0 2px $veryLightBlue;
+  border-radius: 100%;
+}
+@include media-max(1024px) {
+  .col-4-to-1 {
+    width: 33.33333333%;
+  }
+}
+@include media-max(800px) {
+  .col-4-to-1 {
+    width: 50%;
+  }
+}
+@include media-max(550px) {
+  .col-4-to-1 {
+    display: block;
+    width: 100%;
+  }
+}
