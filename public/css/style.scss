@@ -1,7 +1,5 @@
 //////////////////////// Sass Prerequisites //////////////////////////
 $em: 16px;
-// scrollbar and selection restyling
-@import "_scrollbar";
 // colors
 $midBlue: #00a2eb;
 $dimBlue: #017ab1;
@@ -9,9 +7,14 @@ $lightBlue: #9be0ff;
 $veryLightBlue: #e8f8ff;
 $darkBlue: #004B6E;
 $offBlack: rgba(50,50,50,1);
+$darkGrey: rgba(80,80,80,1);
 
 // picture
 $picOfMe: url("../images/picofme-bg-grey.png");
+
+// scrollbar and selection restyling
+@import "_scrollbar";
+
 // necessary mixins
 @import "_mixins.scss";
 
@@ -22,6 +25,7 @@ $picOfMe: url("../images/picofme-bg-grey.png");
 	font-family: sans-serif;
 	transition: all .2s ease-in-out;
 	box-sizing: border-box;
+	color: $offBlack;
 }
 
 body {
@@ -37,8 +41,194 @@ ul, h1, h2, h3, h4, h5, h6 {
 li {
 	list-style: none
 }
+a {
+	&.go-to-page:before {
+		content: "#";
+	}
+	&[target="_blank"]:after {
+		content: "\2924"
+	}
+}
 
 /* body -----------------------*/
+/* open styles */
+.section {
+	padding: 1*$em;
+	&.white-bg {
+		box-shadow: 1*$em 0 0 0 white;
+	}
+}
+.page-wrap {
+	max-width: 1600px;
+	margin: auto;
+}
+
+.col-2-1 {
+	display: inline-block;
+	width: 50%;
+}
+
+.max-width-15_0 {
+	max-width: 15*$em;
+}
+.max-width-18_0 {
+	max-width: 18*$em;
+}
+
+.x-pad-1_0 {
+	padding-left: 1*$em;
+	padding-right: 1*$em;
+}
+.x-pad-2_0 {
+	padding-left: 2*$em;
+	padding-right: 2*$em;
+}
+.x-pad-4_0 {
+	padding-left: 4*$em;
+	padding-right: 4*$em;
+}
+.y-pad-1_0 {
+	padding-top: 1*$em;
+	padding-bottom: 1*$em;
+}
+.y-pad-2_0 {
+	padding-top: 2*$em;
+	padding-bottom: 2*$em;
+}
+.y-pad-4_0 {
+	padding-top: 4*$em;
+	padding-bottom: 4*$em;
+}
+.top-pad-1_0 {
+	padding-top: 1*$em;
+}
+
+.hero {
+	position: relative;
+	height: 100%;
+	&:before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url("../images/piecedigital-greyscale.png");
+		background-size: cover;
+		opacity: .4;
+		pointer-events: none;
+	}
+}
+.bold {
+	font-weight: bold;
+}
+.font-size-3_0 {
+	font-size: 3*$em;
+}
+.font-size-2_5 {
+	font-size: 2.5*$em;
+}
+.font-size-2_0 {
+	font-size: 2*$em;
+}
+.font-size-1_5 {
+	font-size: 1.5*$em;
+}
+.font-size-1_2 {
+	font-size: 1.2*$em;
+}
+.font-size-1_0 {
+	font-size: 1*$em;
+}
+.font-size-0_8 {
+	font-size: .8*$em;
+}
+.font-size-0_5 {
+	font-size: .5*$em;
+}
+
+.left-justify {
+	text-align: left;
+}
+.center-justify {
+	text-align: center;
+}
+.right-justify {
+	text-align: right;
+}
+
+.separator {
+	display: block;
+	margin: .5*$em auto;
+	height: .2*$em;
+	background-color: $midBlue;
+	&.small {
+		max-width: 50%;
+	}
+	&.med {
+		max-width: 70%;
+	}
+	&.large {
+		max-width: 90%;
+	}
+}
+.dark-blue-text {
+	color: $darkBlue;
+}
+.mid-blue-text {
+	color: $midBlue;
+}
+.dim-blue-text {
+	color: $dimBlue;
+}
+.light-blue-text {
+	color: $lightBlue;
+}
+.dark-grey-text {
+	color: $darkGrey;
+}
+.dark-blue-bg {
+	background-color: $darkBlue;
+}
+.mid-blue-bg {
+	background-color: $midBlue;
+}
+.light-blue-bg {
+	background-color: $lightBlue;
+}
+.white-bg {
+	background-color: white;
+}
+
+.border-radius-1_0 {
+	border-radius: 1*$em;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.btn-normal {
+	display: inline-block;
+	padding: .5*$em;
+	border-radius: .5*$em;
+	color: $darkBlue;
+	background-color: $lightBlue;
+	cursor: pointer;
+	&:hover {
+		color: $veryLightBlue;
+		background-color: $dimBlue;
+	}
+}
+
+.align-top {
+	vertical-align: top;
+}
+/* specific styles */
 #page-view {
 	position: relative;
 	padding: .5*$em 16*$em .5*$em .5*$em;
@@ -58,25 +248,20 @@ li {
 		border-radius: .5*$em 0 0 .5*$em;
 		background-color: $veryLightBlue;
 		overflow: auto;
+		transition: all .5s ease-in-out;
 		&.home-view {
 			top: 0;
-			transition: all 1s ease-in-out;
 		}
 		&.projects-view {
-			top: 200vh;
-			transition: all 1s ease-in-out;
+			top: 100vh;
 		}
 		&.designs-view {
-			top: 300vh;
-			transition: all 1s ease-in-out;
+			top: 200vh;
 		}
 	}
 
 	&.projects {
 		& .home-view {
-			top: -200vh;
-		}
-		& .about-view {
 			top: -100vh;
 		}
 		& .projects-view {
@@ -88,9 +273,6 @@ li {
 	}
 	&.designs {
 		& .home-view {
-			top: -300vh;
-		}
-		& .about-view {
 			top: -200vh;
 		}
 		& .projects-view {
@@ -101,12 +283,6 @@ li {
 		}
 	}
 }
-.section {
-	padding: 1*$em;
-}
-.page-wrap {
-	max-width: 1600px;
-}
 #nav-body {
 	position: fixed; 
 	top: 0;
@@ -114,7 +290,7 @@ li {
 	width: 15*$em;
 	height: 100%;
 	padding: .5*$em .5*$em .5*$em 0;
-	& > .container {
+	& > .nav-container {
 		width: 100%;
 		height: 100%;
 		border-radius: 0 .5*$em .5*$em 0;
@@ -236,50 +412,18 @@ li {
 		}
 	}
 }
-
-.hero {
-	position: relative;
-	height: 100%;
-	&:before {
-		content: "";
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100%;
-		background-image: url("../images/piecedigital-greyscale.png");
-		background-size: cover;
-		opacity: .5;
-		pointer-events: none;
+#content-body.home + #nav-body .nav-container .nav-item[href="#home"],
+#content-body.projects + #nav-body .nav-container .nav-item[href="#projects"],
+#content-body.designs + #nav-body .nav-container .nav-item[href="#designs"] {
+	&:after{
+		width: 80%;
+	}
+	&:hover:after {
+		width: 90%;
 	}
 }
-.bold {
-	font-weight: bold;
-}
-.mid-blue-text {
-	color: $darkBlue;
-}
-.font-size-3_0 {
-	font-size: 3*$em;
-}
-.font-size-2_5 {
-	font-size: 2*$em;
-}
-.font-size-2_0 {
-	font-size: 2*$em;
-}
-.font-size-1_5 {
-	font-size: 2*$em;
-}
-.font-size-1_2 {
-	font-size: 1.2*$em;
-}
-.separator {
-	margin: .5*$em 0;
-	height: .2*$em;
-	background-color: $midBlue;
-}
 .intro {
+	display: inline-block;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -287,6 +431,60 @@ li {
   max-width: 18em;
   @include transformT(-50%,-50%);
   text-align: center;
+  &:before {
+  	z-index: -1;
+  	content: "";
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	height: 100%;
+  	background-color: $veryLightBlue;
+  	border-radius: 100%;
+  	box-shadow: 0 0 3*$em 2*$em $veryLightBlue;
+  	// opacity: .4;
+  	opacity: 0;
+  }
+}
+.title {
+	margin: 0 1*$em .2*$em;
+	color: $dimBlue;
+	box-shadow: 0 .2*$em 0 0 $dimBlue;
+}
+
+.skills-list {
+	padding: 1*$em;
+	margin: 1*$em 0;
+	&:nth-child(2n-1) {
+		box-shadow:
+			.2*$em 0 0 0 $darkBlue,
+			inset -.2*$em 0 0 0 $darkBlue;
+	}
+	/* &:nth-child(2n) {
+		box-shadow:
+			-.2*$em 0 0 0 $darkBlue,
+			inset .2*$em 0 0 0 $darkBlue;
+	} */
+	& .skill-title {
+		&:before {
+			content: ": ";
+			font-weight: bold;
+		}
+		/* &:after {
+			content: " :";
+			font-weight: bold;
+		} */
+	}
+	& li {
+		margin: .5*$em 0 0 1*$em;
+		list-style: disc;
+	}
+}
+.job-description {
+	padding: 1*$em 0 1*$em 1*$em;
+	& li {
+		list-style: disc;
+	}
 }
 /* hover events -----------------------*/
 
