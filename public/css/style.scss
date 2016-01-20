@@ -45,8 +45,8 @@ a {
 	&.go-to-page:before {
 		content: "#";
 	}
-	&[target="_blank"]:after {
-		content: "\2924"
+	&[target="_blank"]:not(.no-symbol):before {
+		content: "\2924";
 	}
 }
 
@@ -67,6 +67,10 @@ a {
 	display: inline-block;
 	width: 50%;
 }
+.col-3-2-1 {
+	display: inline-block;
+	width: 33.3333333%;
+}
 
 .max-width-15_0 {
 	max-width: 15*$em;
@@ -83,9 +87,17 @@ a {
 	padding-left: 2*$em;
 	padding-right: 2*$em;
 }
+.x-pad-3_0 {
+	padding-left: 3*$em;
+	padding-right: 3*$em;
+}
 .x-pad-4_0 {
 	padding-left: 4*$em;
 	padding-right: 4*$em;
+}
+.y-pad-0_5 {
+	padding-top: .5*$em;
+	padding-bottom: .5*$em;
 }
 .y-pad-1_0 {
 	padding-top: 1*$em;
@@ -94,6 +106,10 @@ a {
 .y-pad-2_0 {
 	padding-top: 2*$em;
 	padding-bottom: 2*$em;
+}
+.y-pad-3_0 {
+	padding-top: 3*$em;
+	padding-bottom: 3*$em;
 }
 .y-pad-4_0 {
 	padding-top: 4*$em;
@@ -214,14 +230,35 @@ a {
 
 .btn-normal {
 	display: inline-block;
+	position: relative;
 	padding: .5*$em;
+	border: none;
 	border-radius: .5*$em;
 	color: $darkBlue;
 	background-color: $lightBlue;
+	font-weight: bold;
 	cursor: pointer;
+	& .arrow {
+		&.down {
+			position: absolute;
+			bottom: -2*$em;
+			left: 50%;
+			@include transformT(-50%, 0);
+			border-top: 2*$em;
+			border-right: 1.5*$em;
+			border-left: 1.5*$em;
+			border-style: solid;
+			border-color: $lightBlue transparent transparent;
+		}
+	}
 	&:hover {
 		color: $veryLightBlue;
 		background-color: $dimBlue;
+		& .arrow {
+			&.down {
+				border-color: $dimBlue transparent transparent;
+			}
+		}
 	}
 }
 
@@ -450,30 +487,26 @@ a {
 	margin: 0 1*$em .2*$em;
 	color: $dimBlue;
 	box-shadow: 0 .2*$em 0 0 $dimBlue;
+	&.dark {
+		box-shadow: 0 .2*$em 0 0 $darkBlue;
+	}
 }
 
 .skills-list {
 	padding: 1*$em;
 	margin: 1*$em 0;
-	&:nth-child(2n-1) {
-		box-shadow:
-			.2*$em 0 0 0 $darkBlue,
-			inset -.2*$em 0 0 0 $darkBlue;
+	min-height: 12*$em;
+	box-shadow:
+		.2*$em 0 0 0 $dimBlue,
+		inset -.2*$em 0 0 0 $dimBlue;
+	&:nth-child(3n) {
+		box-shadow: none;
 	}
-	/* &:nth-child(2n) {
-		box-shadow:
-			-.2*$em 0 0 0 $darkBlue,
-			inset .2*$em 0 0 0 $darkBlue;
-	} */
 	& .skill-title {
 		&:before {
 			content: ": ";
 			font-weight: bold;
 		}
-		/* &:after {
-			content: " :";
-			font-weight: bold;
-		} */
 	}
 	& li {
 		margin: .5*$em 0 0 1*$em;
@@ -486,6 +519,103 @@ a {
 		list-style: disc;
 	}
 }
-/* hover events -----------------------*/
+
+#contact-form  {
+	display: block;
+	max-width: 30*$em;
+	margin: auto;
+	& label {
+		display: block;
+		padding: 0 .2*$em;
+		margin: .2*$em;
+		&:before {
+			content: "* ";
+			color: red;
+		}
+	}
+	& input, textarea {
+		display: block;
+		width: 100%;
+		max-width: 30*$em;
+		padding: .2*$em;
+		border: 1px solid $dimBlue;
+		border-radius: .5*$em;
+		color: $darkBlue;
+		transition: 0s all;
+	}
+	& .err-msg {
+		& div {
+			font-size: .7*$em;
+			color: red;
+		}
+	}
+}
+.project-box {
+	display: inline-block;
+	position: relative;
+	border-radius: .5*$em;
+	width: 16*$em;
+	height: 16*$em;
+	background-color: $darkBlue;
+	background-position: center;
+	background-size: cover;
+	box-shadow: 0 0 0 1px $dimBlue;
+	cursor: pointer;
+	overflow: hidden;
+	&:before {
+		z-index: 1;
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transformT(-50%, -50%);
+		width: 0%;
+		height: 0%;
+		border-radius: .5*$em;
+		background-color: $dimBlue;
+		pointer-events: none;
+		opacity: 0;
+	}
+	&:after {
+		display: inline-block;
+		z-index: 1;
+		content: "\2922";
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transformST(0, -50%, -50%);
+		padding: .2*$em .5*$em;
+		color: $veryLightBlue;
+		box-shadow: 0 0 0 .4*$em $veryLightBlue;
+		border-radius: 100%;
+		font-size: 1.5*$em;
+		opacity: 0;
+	}
+	&:hover {
+		&:before, &:after {
+			opacity: 1;
+		}
+		&:before {
+			width: 100%;
+			height: 100%;
+		}
+		&:after {
+			@include transformST(1, -50%, -50%);
+		}
+	}
+	& .text {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		@include transformT(-50%, -50%);
+		width: 100%;
+		padding: .5*$em 0;
+		font-size: 1.2*$em;
+		background-color: $lightBlue;
+		box-shadow: 0 0 0 10*$em rgba(30,30,30,.2), // overs images
+			0 0 2*$em .5*$em black,
+			0 0 0 .1*$em $dimBlue;
+	}
+}
 
 /*//////////////////////// media queries ////////////////////////*/
