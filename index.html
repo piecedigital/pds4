@@ -71,6 +71,7 @@
 									<li><span>Gulp</span></li>
 									<li><span>Sass (CSS Pre-Processor)</span></li>
 									<li><span>Photoshop</span></li>
+									<li><span>NodeJS</span></li>
 								</ul><!--
 								--><ul class="skills-list col-3-2-1 align-top">
 									<h4 class="skill-title dim-blue-text font-size-1_2">JavaScript Libraries</h4>
@@ -231,13 +232,49 @@
 								<h1 class="dim-blue-text font-size-2_0">My Projects</h1>
 							</div>
 							<div class="projects-placement y-pad-2_0">
-
 							</div>
 						</div>
 					</div>
 
 				</div>
-				<div class="designs-view"></div>
+				<div class="full-project-view">
+
+					<div class="section">
+						<div class="page-wrap y-pad-4_0">
+							<div class="title dark max-width-15_0">
+								<h1 class="full-project-name dark-blue-text font-size-2_0">Project Name</h1>
+							</div>
+							<div class="text-body x-pad-4_0 top-pad-1_0 font-size-1_2">
+								<p class="full-project-desc">
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="section white-bg">
+						<div class="page-wrap y-pad-4_0">
+							<div class="title max-width-15_0">
+								<h1 class="dim-blue-text font-size-2_0">Skills</h1>
+							</div>
+							<div class="full-project-skills x-pad-3_0">
+							</div>
+						</div>
+					</div>
+
+					<div class="section">
+						<div class="page-wrap y-pad-4_0">
+
+							<div class="title dark max-width-15_0">
+								<h1 class="dark-blue-text font-size-2_0">Links</h1>
+							</div>
+							<div class="full-project-links center-justify font-size-1_2 x-pad-3_0 y-pad-2_0">
+								
+							</div>
+
+						</div>
+					</div>
+
+				</div>
 			</div><!--
 			--><div id="nav-body">
 				<div class="nav-container">
@@ -254,9 +291,9 @@
 						<span>Project Portfolio</span>
 						<div class="right-bump"></div>
 					</a>
-					<a href="#designs" class="nav-item go-to-page">
+					<a href="https://medium.com/@PieceDigital" class="nav-item" target="_blank">
 						<div class="left-bump"></div>
-						<span>Design Portfolio</span>
+						<span>Blog</span>
 						<div class="right-bump"></div>
 					</a>
 					<div class="footer">
@@ -286,10 +323,41 @@
 		</div>
 		<script type="text/javascript" src="public/js/jquery-1.11.2.min.js"></script>
 		<script>
-			$(document).ready(function() {
-				var goToPage = function() {
-					$("#content-body").attr("class", $(this).attr("href").replace("#", ""));
+			String.prototype.stripSearch = function() {
+				return this.replace("#", "").replace(/\?.*/, "")
+			};
+			var formatQueryies = function() {
+				var queryObj = {};
+				var searchArr = location.hash.replace(/\#[\w\-]*/, "").match(/([a-zA-z0-9][\-\_]?)*[=]([a-zA-z0-9][\-\_]?)*/gi) || [];
+				searchArr.map(function(elem, ind) {
+					elem = elem.split("=");
+					queryObj[elem[0]] = elem[1];
+				});
+				return queryObj;
+			};
+			var formatLink = function(str) {
+				if(!str.match(/\[.*\]\(.*\)/)) return str;
+				var linkObj = {
+					text: str.match(/^\[(.*)\]/).pop(),
+					link: str.match(/\((.*)\)$/).pop()
 				};
+
+				return $("<a>")
+					.attr("href", linkObj.link)
+					.attr("target", "_blank")
+					.text(linkObj.text);
+			};
+			// projects and their slides
+			$(document).ready(function() {
+				if(location.hash) $("#content-body").attr("class", location.hash.stripSearch() );
+				if(!location.href.match("file:///")) history.replaceState({}, "", location.href.replace("index.html", "index") );
+			});
+		</script>
+		<script>
+			var goToPage = function(page) {
+				$("#content-body").attr("class", (typeof page === "string") ? page : $(this).attr("href").stripSearch());
+			};
+			$(document).ready(function() {
 
 				$(".go-to-page").on("click", goToPage);
 
@@ -343,73 +411,200 @@
 			$(document).ready(function() {
 				var projects = [
 					{
-						projectName: "ShoehornJS",
+						projectName: "YouTube Video Viewer",
 						img: null,
-						desc: "ShoehornJS is a simple and small JavaScript tool for creating type safety. It insures that your variables are being assigned the corrent datatypes and provides a way of improving your error handling for these datatypes.",
-						skillsApplied: ["JavaScript", "Programming"]
-					},
-					{
-						projectName: "Twitch Exe",
-						img: "public/images/small_twitch_exe_previews/twitch_4.png",
-						desc: "Twitch Exe is a desktop application for watching livestreams from Twitch.tv. It's built using Electron. It provides and asynchronous viewing experience so you don't have to refresh or stop watching a streamer just to see who's online! It supports multi-stream viewing and it also supports multitwitch.tv links! ",
-						skillsApplied: ["HTML", "CSS3", "[Electron](http://electron.atom.io)", "JavaScript", "Ajax", "JavaScript", "Programming"]
-					},
-					{
-						projectName: "TutoPop",
-						img: null,
-						desc: "TutoPop is a jQuery-based tool for creating simple popup tutorials to introduce your users the interface of your website or web app! ",
-						skillsApplied: ["JavaScript", "JQuery", "Programming", "HTML", "CSS"]
-					},
-					{
-						projectName: "LayoutCSS",
-						img: null,
-						desc: "LayoutCSS is a fairly verbose and literal CSS framework, designed to make sense semantically. LayoutCSS started off as my own personal CSS framework for quickly piecing together a website layout. I found it to be very clear and verbose so I'm releasing it now as an open-source option for those who might like that aspect of a CSS framework.",
-						skillsApplied: ["HTML", "CSS", "Web Design", "Sass"]
-					},
-					{
-						projectName: "Guide Magazine Chat App",
-						img: null,
-						desc: "This project was created for a small organization by the name of Guide Magazine. They hold weekly chat sessions online. I offered my skills to help them out a bit by creating a chat application to replace their current Java applet. The app needed to carry over and improve all of the necessary parts of their previous app, and also add some nifty new ones. The goal was to create a customized, functional, and scalable web app. Linked below is a video demo of the project (the video may be of the project in an older but stable state).",
-						skillsApplied: ["JavaScript", "NodeJS", "ExpressJS", "JQuery", "Ajax", "HTML", "CSS", "Sass", "Responsive Web Design"]
-					},
-					{
-						projectName: "IGN Code Fo 2015 Challenges",
-						img: null,
-						desc: "In April of 2015 IGN presented various coding challenges to be completed by the first of May. These challeges were to be treated essentially as our application to be a part of their internship program. I unfortunately did not pass the second round of applicants, but I thoroughly enjoyed the experience and the opportunity to work on interesting algorithm and API challenges. Linked below is the completed API challenge given, and also my Github repo containing the API challenge and the algorithm challenge (also the \"README.md\" contains my answers to their given questions).",
-						skillsApplied: ["JavaScript", "NodeJS", "ExpressJS", "JQuery", "HTML", "CSS", "Sass", "Responsive Web Design"]
+						desc: "This project was my first time diving into AngularJS, harnessing it's tools to use the YouTube API and pull channel data. In this mini-project you have the option to type in the name of a YouTube channel (provided that they have a URL) and view, and navigate through all available videos on that channel. ",
+						skillsApplied: {
+							languages: ["HTML", "CSS", "JavaScript"],
+							tools: ["Sass"],
+							libraries: ["JQuery"],
+							frameworks: ["AngularJS"],
+							other: ["Ajax"]
+						},
+						links: ["[View Full Project](http://piecedigital.github.io/projects/youtube-video-viewer/index.html)"]
 					},
 					{
 						projectName: "Twitch Stream Viewer",
 						img: null,
 						desc: "This project started off as something I would do as part of the Free Code Camp curriculum, but I've taken it on as my own to be something a bit better. In addition to the initial project, I've added a full stream viewer, complete with the option to view stream in a sort of theater mode, hide/show chat, and add new streamers to the list (temporarily). ",
-						skillsApplied: ["HTML", "CSS", "Sass", "JavaScript", "JQuery", "Ajax", "Responsive Web Design"]
+						skillsApplied: {
+							languages: ["HTML", "CSS", "JavaScript"],
+							tools: ["Sass"],
+							libraries: ["JQuery"],
+							other: ["Ajax", "Responsive Web Design"]
+						},
+						links: ["[View Full Project](http://piecedigital.github.io/projects/twitch-stream-viewer/index.html)"]
 					},
 					{
-						projectName: "YouTube Video Viewer",
+						projectName: "IGN Code Fo 2015 Challenges",
 						img: null,
-						desc: "This project was my first time diving into AngularJS, harnessing it's tools to use the YouTube API and pull channel data. In this mini-project you have the option to type in the name of a YouTube channel (provided that they have a URL) and view, and navigate through all available videos on that channel. ",
-						skillsApplied: ["HTML", "CSS", "Sass", "JavaScript", "AngularJS", "Ajax"]
+						desc: "In April of 2015 IGN presented various coding challenges to be completed by the first of May. These challeges were to be treated essentially as our application to be a part of their internship program. I unfortunately did not pass the second round of applicants, but I thoroughly enjoyed the experience and the opportunity to work on interesting algorithm and API challenges. Linked below is the completed API challenge given, and also my Github repo containing the API challenge and the algorithm challenge (also the \"README.md\" contains my answers to their given questions).",
+						skillsApplied: {
+							languages: ["JavaScript", "NodeJS", "ExpressJS", "JQuery", "HTML", "CSS", "Sass", "Responsive Web Design"],
+							tools: ["Sass"],
+							libraries: ["JQuery"],
+							frameworks: ["ExpressJS"],
+							other: ["Responsive Web Design"]
+						},
+						links: ["[View Full Project)(http://pds-code-foo-2015.herokuapp.com/)", "[View Github Repo](http://github.com/piecedigital/code-foo-2015)"]
+					},
+					{
+						projectName: "Guide Magazine Chat App",
+						img: null,
+						desc: "This project was created for a small organization by the name of Guide Magazine. They hold weekly chat sessions online. I offered my skills to help them out a bit by creating a chat application to replace their current Java applet. The app needed to carry over and improve all of the necessary parts of their previous app, and also add some nifty new ones. The goal was to create a customized, functional, and scalable web app. Linked below is a video demo of the project (the video may be of the project in an older but stable state).",
+						skillsApplied: {
+							languages: ["JavaScript", "HTML", "CSS"],
+							tools: ["NodeJS", "JQuery", "Sass"],
+							libraries: ["JQuery"],
+							frameworks: ["ExpressJS"],
+							other: ["Ajax", "Responsive Web Design"]
+						},
+						links: ["[View Project Demo](https://www.youtube.com/watch?v=wfCPQonKG1c)"]
+					},
+					{
+						projectName: "LayoutCSS",
+						img: null,
+						desc: "LayoutCSS is a fairly verbose and literal CSS framework, designed to make sense semantically. LayoutCSS started off as my own personal CSS framework for quickly piecing together a website layout. I found it to be very clear and verbose so I'm releasing it now as an open-source option for those who might like that aspect of a CSS framework.",
+						skillsApplied: {
+							languages: ["HTML", "CSS"],
+							tools: ["Sass"],
+							other: ["Web Design"]
+						},
+						links: ["[View On npm](https://www.npmjs.com/package/layoutcss)", "[View Project Website](http://piecedigital.github.io/layout-css-website/)"] 
+					},
+					{
+						projectName: "TutoPop",
+						img: null,
+						desc: "TutoPop is a jQuery-based tool for creating simple popup tutorials to introduce your users the interface of your website or web app! ",
+						skillsApplied: {
+							languages: ["JavaScript", "JQuery", "HTML", "CSS"],
+							other: ["Responsive Web Design"]
+						},
+						links: ["[View On npm](https://www.npmjs.com/package/tutopop)", "[View Codepen.io Example](http://codepen.io/piecedigital/full/vNdaJm)"]
+					},
+					{
+						projectName: "Twitch Exe",
+						img: "public/images/small_twitch_exe_previews/twitch_4.png",
+						desc: "Twitch Exe is a desktop application for watching livestreams from Twitch.tv. It's built using Electron. It provides and asynchronous viewing experience so you don't have to refresh or stop watching a streamer just to see who's online! It supports multi-stream viewing and it also supports multitwitch.tv links! ",
+						skillsApplied: {
+							languages: ["HTML", "CSS3", "JavaScript"],
+							tools: ["Sass"],
+							libraries: ["React"],
+							other: ["[Electron](http://electron.atom.io)", "Ajax"]
+
+						},
+						links: ["[DOWNLOAD THE 32bit EXECUTABLE | v0.6.0 | 50 mb](http://www.mediafire.com/download/rq3rj8695dgzjyz/twitch-exe-win-32bit_v0.6.0.zip)",
+						"[DOWNLOAD THE 64bit EXECUTABLE | v0.6.0 | 59 mb](http://www.mediafire.com/download/j25cq3ss2wkbck6/twitch-exe-win-64bit_v0.6.0.zip)"],
+						gallary: ["public/images/small_twitch_exe_previews/twitch_1.png", "public/images/small_twitch_exe_previews/twitch_2.png", "public/images/small_twitch_exe_previews/twitch_3.png", "public/images/small_twitch_exe_previews/twitch_4.png", "public/images/small_twitch_exe_previews/twitch_5.png", "public/images/small_twitch_exe_previews/twitch_6.png", "public/images/small_twitch_exe_previews/twitch_7.png"]
+					},
+					{
+						projectName: "ShoehornJS",
+						img: null,
+						desc: "ShoehornJS is a simple and small JavaScript tool for creating type safety. It insures that your variables are being assigned the corrent datatypes and provides a way of improving your error handling for these datatypes.",
+						skillsApplied: {
+							languages: ["JavaScript"]
+						},
+						links: ["[View On npm](https://www.npmjs.com/package/shoehornjs)", "[View Github Repo](http://github.com/piecedigital/shoehorn.js)"]
 					}
 				];
 
-				var CreateProjectElement = function(name, img) {
+				var projectsReference = {
+					"gcc-app": 3
+				};
+
+				var CreateProjectElement = function(index, name, img) {
 					return $("<div>")
 						.addClass("col-3-2-1 center-justify x-pad-0_5 y-pad-0_5")
 						.html(
-							$("<div>")
-								.addClass("project-box")
-								.css("background-image", "url("+((img) ? img : "public/images/1logo.png")+")")
-								.html(
-									$("<h4>")
-										.addClass("text")
-										.text(name)
-								)
+						$("<a>")
+							.addClass("project-box")
+							.attr("data-index", index)
+							.attr("href", "#full-project?project=" + index)
+							.css("background-image", "url("+((img) ? img : "public/images/1logo.png")+")")
+							.html(
+							$("<h4>")
+								.addClass("text")
+								.text(name)
+							)
 						)
 				};
 
-				projects.map(function(elem) {
-					var projectElement = new CreateProjectElement(elem.projectName, elem.img);
+				projects.map(function(elem, index) {
+					var reverseIndex = projects.length - 1 - index;
+					var projectElement = new CreateProjectElement(reverseIndex, projects[reverseIndex].projectName, projects[reverseIndex].img);
 					$(".projects-placement").append($(projectElement));
+				});
+
+				var figureOutTitle = function(key) {
+					return key.replace(key[0], key[0].toUpperCase());
+					/*(key === "languages") ? "Languages" :
+						(key === "tools") ? "Tools" :
+						(key === "libraries") ? "Libraries" :
+						(key === "frameworks") ? "Frameworks" :
+						"Other";*/
+				};
+
+				var populateFullProject = function(index) {
+					$(".full-project-name").text( projects[index].projectName );
+					$(".full-project-desc").text( projects[index].desc );
+
+					var projAlias = projects[index].skillsApplied,
+						completeElements = [];
+
+					for(key in projAlias) {
+						var skills = projAlias[key].map(function(skill) {
+							return $("<li>")
+											.html(
+												$("<span>")
+													.html(formatLink(skill))
+											)
+						});
+						skills.unshift($("<h4>")
+								.addClass("skill-title dim-blue-text font-size-1_2")
+								.text(figureOutTitle(key)));
+
+						var fullElement = $("<ul>")
+							.addClass("skills-list col-3-2-1 align-top");
+
+						skills.map(function(elem) {
+							$(fullElement).append($(elem));
+						});
+
+						completeElements.push($(fullElement));
+					};
+
+					$(".full-project-skills").html("");
+					completeElements.map(function(elem) {
+						$(".full-project-skills").append($(elem));
+					});
+
+					$(".full-project-links").html("");
+					projects[index].links.map(function(elem) {
+						$(".full-project-links").append(
+							$("<div>")
+							.addClass("col-3-2-1 center-justify x-pad-1_0")
+							.html(
+								$( formatLink(elem) )
+									.attr("target", "_blank")
+									.addClass("btn-normal")
+							)
+						);
+					});
+				};
+
+				var queries = formatQueryies();
+				if(queries.project) {
+					var projectNum = ( isNaN(parseInt(queries.project)) ) ? projectsReference[queries.project] : parseInt(queries.project);
+					console.log(projectNum)
+					populateFullProject( projectNum );
+					goToPage("full-project");
+				}
+
+				$(document).on("click", ".project-box", function() {
+					var index = $(this).data("index");
+					goToPage("full-project");
+					//if(!location.href.match("file:///")) history.pushState({}, "", location.href.replace(/\#[\w\-]*/, "#full-project?project=" + index) )
+					populateFullProject( parseInt( index ) );
 				});
 			});
 		</script>

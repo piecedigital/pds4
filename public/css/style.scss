@@ -292,7 +292,7 @@ a {
 		&.projects-view {
 			top: 100vh;
 		}
-		&.designs-view {
+		&.full-project-view {
 			top: 200vh;
 		}
 	}
@@ -304,18 +304,18 @@ a {
 		& .projects-view {
 			top: 0vh;
 		}
-		& .designs-view {
+		& .full-project-view {
 			top: 100vh;
 		}
 	}
-	&.designs {
+	&.full-project {
 		& .home-view {
 			top: -200vh;
 		}
 		& .projects-view {
 			top: -100vh;
 		}
-		& .designs-view {
+		& .full-project-view {
 			top: 0vh;
 		}
 	}
