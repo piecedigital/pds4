@@ -45,10 +45,10 @@ a {
 	color: inherit;
 	font-weight: bold;
 	&.go-to-page:before {
-		content: "#";
+		content: "# ";
 	}
 	&[target="_blank"]:not(.no-symbol):before {
-		content: "\2924";
+		content: "\2924 ";
 	}
 }
 
@@ -72,6 +72,14 @@ a {
 .col-3-2-1 {
 	display: inline-block;
 	width: 33.3333333%;
+}
+.col-4-3-2-1 {
+	display: inline-block;
+	width: 25%;
+}
+.col-5-4-3-2-1 {
+	display: inline-block;
+	width: 20%;
 }
 
 .max-width-15_0 {
@@ -290,12 +298,12 @@ a {
 	overflow: hidden;
 	width: 100%;
 	height: 100%;
+	border-radius: .5*$em;
 	& > div {
 		position: absolute;
 		left: 0;
 		width: 100%;
 		height: 100%;
-		border-radius: .5*$em 0 0 .5*$em;
 		background-color: $veryLightBlue;
 		overflow: auto;
 		transition: all .5s ease-in-out;
@@ -710,8 +718,20 @@ a {
 	display: none;
 }
 /*//////////////////////// media queries ////////////////////////*/
+@include media-max(1670px) {
+	.col-5-4-3-2-1 {
+		width: 25%;
+	}
+}
+
+@include media-max(1400px) {
+	.col-4-3-2-1, .col-5-4-3-2-1 {
+		width: 33.3333333%;
+	}
+}
+
 @include media-max(1140px) {
-	.col-3-2-1 {
+	.col-3-2-1, .col-4-3-2-1, .col-5-4-3-2-1 {
 		width: 50%;
 	}
 	.skills-list {
@@ -752,11 +772,7 @@ a {
 }
 
 @include media-max(860px) {
-	.col-2-1 {
-		display: block;
-		width: 100%;
-	}
-	.col-3-2-1 {
+	.col-2-1, .col-3-2-1, .col-4-3-2-1, .col-5-4-3-2-1 {
 		display: block;
 		width: 100%;
 	}

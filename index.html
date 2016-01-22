@@ -167,10 +167,18 @@
 							<div class="title max-width-18_0">
 								<h1 class="dim-blue-text font-size-2_0">Projects</h1>
 							</div>
+							<div class="y-pad-2_0">
+								<div class="job-title bold">
+									<h2 class="dark-blue-text x-pad-3_0 font-size-1_5 shrink-pad-mobile">Featured Projects</h2>
+								</div>
+								<div class="featured-projects x-pad-3_0 shrink-pad-mobile">
+								</div>
+							</div>
+							<div class="separator small dark-blue-bg"></div>
 							<div class="x-pad-3_0 y-pad-2_0">
 								<div class="font-size-1_2 center-justify">
 									<a href="#projects" class="btn-normal go-to-page">
-										View My<br>Projects Portfolio
+										View All Projects
 										<div class="arrow down"></div>
 									</a>
 								</div>
@@ -552,7 +560,7 @@
 
 				var CreateProjectElement = function(index, name, img) {
 					return $("<div>")
-						.addClass("col-3-2-1 center-justify x-pad-0_5 y-pad-0_5")
+						.addClass("col-5-4-3-2-1 center-justify x-pad-0_5 y-pad-0_5")
 						.html(
 						$("<a>")
 							.addClass("project-box to-project")
@@ -570,7 +578,12 @@
 				projects.map(function(elem, index) {
 					var reverseIndex = projects.length - 1 - index;
 					var projectElement = new CreateProjectElement(reverseIndex, projects[reverseIndex].projectName, projects[reverseIndex].img);
+
 					$(".projects-placement").append($(projectElement));
+					if(index < 3) {
+						var featuredProj = new CreateProjectElement(reverseIndex, projects[reverseIndex].projectName, projects[reverseIndex].img);
+						$(".featured-projects").append($(featuredProj));
+					};
 				});
 
 				var figureOutTitle = function(key) {
