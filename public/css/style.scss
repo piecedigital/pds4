@@ -714,6 +714,16 @@ a {
 	.col-3-2-1 {
 		width: 50%;
 	}
+	.skills-list {
+		&:nth-child(odd) {
+		box-shadow:
+			.2*$em 0 0 0 $dimBlue,
+			inset -.2*$em 0 0 0 $dimBlue;
+		}
+		&:nth-child(even) {
+			box-shadow: none;
+		}
+	}
 }
 
 @include media-max(940px) {
@@ -751,7 +761,7 @@ a {
 		width: 100%;
 	}
 	.skills-list {
-		box-shadow: none;
+		box-shadow: none !important;
 		border-bottom: .2*$em solid $dimBlue;
 	}
 }

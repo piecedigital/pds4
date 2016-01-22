@@ -32,7 +32,7 @@
 							<h4 class="font-size-1_2 dim-blue-text bold">Full-Stack Web Developer</h4>
 						</div>
 					</div>
-
+					<!-- about me -->
 					<div class="section white-bg">
 						<div class="page-wrap y-pad-4_0 shrink-pad-mobile">
 							<div class="title dark max-width-15_0">
@@ -59,7 +59,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- skills -->
 					<div class="section">
 						<div class="page-wrap y-pad-4_0 shrink-pad-mobile">
 							<div class="title max-width-15_0">
@@ -100,7 +100,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- experience -->
 					<div class="section white-bg">
 						<div class="page-wrap y-pad-4_0 shrink-pad-mobile">
 							<div class="title dark max-width-15_0">
@@ -117,7 +117,7 @@
 									<h3 class="dark-grey-text font-size-0_8">Aug 2015 - Oct 2015</h3>
 								</div><!--
 								--><ul class="job-description">
-									<li>Created a fully featured JavaScript chat application, complete with admin panel: <a class="go-to-page" href="#projects">View Project</a></li>
+									<li>Created a fully featured JavaScript chat application, complete with admin panel: <a data-index="gcc-app" class="go-to-page to-project" href="#full-project?project=gcc-app">View Project</a></li>
 									<li>Designed the app to be touchscreen-friendly and responsive across desktop and mobile</li>
 									<li>Constructed server code to be modular and efficient</li>
 								</ul>
@@ -125,7 +125,7 @@
 
 							<div class="separator small dark-blue-bg"></div>
 
-							<div class="font-size-1_2 x-pad-2_0 y-pad-2_0 shrink-pad-mobile">
+							<div class="font-size-1_2 x-pad-3_0 y-pad-2_0 shrink-pad-mobile">
 								<div class="job-title bold">
 									<h2 class="dark-blue-text font-size-1_5">Freelance Web Developer / Consultant</h2>
 								</div>
@@ -143,7 +143,7 @@
 
 							<div class="separator small dark-blue-bg"></div>
 
-							<div class="font-size-1_2 x-pad-2_0 y-pad-2_0 shrink-pad-mobile">
+							<div class="font-size-1_2 x-pad-3_0 y-pad-2_0 shrink-pad-mobile">
 								<div class="job-title bold">
 									<h2 class="dark-blue-text font-size-1_5">Freelance Web Developer / Consultant</h2>
 								</div>
@@ -160,7 +160,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- projects (links) -->
 					<div class="section">
 						<div class="page-wrap y-pad-4_0">
 							<div class="title max-width-18_0">
@@ -176,7 +176,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- resumes -->
 					<div class="section white-bg">
 						<div class="page-wrap y-pad-4_0">
 							<div class="title dakr max-width-18_0">
@@ -200,7 +200,7 @@
 							</div>
 						</div>
 					</div>
-
+					<!-- contact me -->
 					<div class="section">
 						<div class="page-wrap y-pad-4_0">
 							<div class="title max-width-18_0">
@@ -545,13 +545,16 @@
 				var projectsReference = {
 					"gcc-app": 3
 				};
+				var parseProjectIndex = function(key) {
+					return ( isNaN(parseInt(key)) ) ? projectsReference[key] : parseInt(key);
+				};
 
 				var CreateProjectElement = function(index, name, img) {
 					return $("<div>")
 						.addClass("col-3-2-1 center-justify x-pad-0_5 y-pad-0_5")
 						.html(
 						$("<a>")
-							.addClass("project-box")
+							.addClass("project-box to-project")
 							.attr("data-index", index)
 							.attr("href", "#full-project?project=" + index)
 							.css("background-image", "url("+((img) ? img : "public/images/1logo.png")+")")
@@ -678,14 +681,14 @@
 
 				var queries = formatQueryies();
 				if(queries.project) {
-					var projectNum = ( isNaN(parseInt(queries.project)) ) ? projectsReference[queries.project] : parseInt(queries.project);
+					var projectNum = parseProjectIndex(queries.project)
 					//console.log(projectNum)
 					populateFullProject( projectNum );
 					goToPage("full-project");
 				}
 
-				$(document).on("click", ".project-box", function() {
-					var index = $(this).data("index");
+				$(document).on("click", ".to-project", function() {
+					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
 					//if(!location.href.match("file:///")) history.pushState({}, "", location.href.replace(/\#[\w\-]*/, "#full-project?project=" + index) )
 					populateFullProject( parseInt( index ) );

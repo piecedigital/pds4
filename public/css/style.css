@@ -654,7 +654,12 @@ a {
 /*//////////////////////// media queries ////////////////////////*/
 @media screen and (max-width: 1140px) {
   .col-3-2-1 {
-    width: 50%; } }
+    width: 50%; }
+
+  .skills-list:nth-child(odd) {
+    box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; }
+  .skills-list:nth-child(even) {
+    box-shadow: none; } }
 @media screen and (max-width: 940px) {
   .full-project-gallery {
     padding-left: 0;
@@ -680,7 +685,7 @@ a {
     width: 100%; }
 
   .skills-list {
-    box-shadow: none;
+    box-shadow: none !important;
     border-bottom: 3.2px solid #017ab1; } }
 @media screen and (max-width: 670px) {
   .shrink-pad-mobile {
