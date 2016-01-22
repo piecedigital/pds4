@@ -23,12 +23,12 @@ $picOfMe: url("../images/picofme-bg-grey.png");
 /* css resets */
 *, *:before, *:after {
 	font-family: sans-serif;
-	transition: all .2s ease-in-out;
+	transition: .2s all ease-in-out;
 	box-sizing: border-box;
-	color: $offBlack;
 }
 
 body {
+	color: $offBlack;
 	margin: 0;
 	background: $midBlue;
 }
@@ -42,6 +42,8 @@ li {
 	list-style: none
 }
 a {
+	color: inherit;
+	font-weight: bold;
 	&.go-to-page:before {
 		content: "#";
 	}
@@ -117,6 +119,11 @@ a {
 }
 .top-pad-1_0 {
 	padding-top: 1*$em;
+}
+
+.scrollable {
+	overflow: auto;
+	height: 100%;
 }
 
 .hero {
@@ -238,6 +245,9 @@ a {
 	background-color: $lightBlue;
 	font-weight: bold;
 	cursor: pointer;
+	& *, &:before, &:after {
+		color: $darkBlue;
+	}
 	& .arrow {
 		&.down {
 			position: absolute;
@@ -254,6 +264,9 @@ a {
 	&:hover {
 		color: $veryLightBlue;
 		background-color: $dimBlue;
+		& *, &:before, &:after {
+			color: $veryLightBlue;
+		}
 		& .arrow {
 			&.down {
 				border-color: $dimBlue transparent transparent;
@@ -328,15 +341,24 @@ a {
 	height: 100%;
 	padding: .5*$em .5*$em .5*$em 0;
 	& > .nav-container {
+		position: relative;
 		width: 100%;
 		height: 100%;
+		padding: 5.2*$em 0 4.5*$em;
 		border-radius: 0 .5*$em .5*$em 0;
 		background-color: $veryLightBlue;
+		// overflow: auto;
 		& .logo {
-			border-bottom: .2*$em solid $midBlue;
-			& img {
-				width: 100%;
-			}
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 5.2*$em;
+			box-shadow: inset 0 -.2*$em 0 0 $midBlue;
+			background-image: url("../images/logo.png");
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
 		}
 		& .nav-item {
 			display: block;
@@ -618,4 +640,185 @@ a {
 	}
 }
 
+.gallery-img {
+	position: relative;
+	padding: 0 16*$em 0 0;
+	min-height: 320px;
+	& img {
+		max-width: 100%;
+		max-height: 100%;
+		border-radius: .25*$em;
+		box-shadow: 0 0 0 1px $midBlue;
+		background-color: $lightBlue;
+	}
+	& .gallery-list {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 15*$em;
+		height: 100%;
+		padding: .25*$em 0;
+		box-shadow: 0 0 0 1px $midBlue;
+		background-color: $lightBlue;
+		overflow: auto;
+		& li {
+			position: relative;
+			width: 100%;
+			padding: .25*$em .5*$em;
+			border-radius: .25*$em;
+			& img {
+				display: block;
+				width: 100%;
+				cursor: pointer;
+			}
+			&:before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				background-color: $lightBlue;
+				opacity: 0;
+			}
+			&:after {
+				content: "";
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				@include transformT(-50%,-50%);
+				border-right: 2*$em solid $veryLightBlue;
+				border-top: 1.5*$em solid transparent;
+				border-bottom: 1.5*$em solid transparent;
+				opacity: 0;
+			}
+			&:hover {
+				&:before {
+					opacity: .8;
+				}
+				&:after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
+.show-more-mobile {
+	display: none;
+}
+.mobile-menu {
+	display: none;
+}
 /*//////////////////////// media queries ////////////////////////*/
+@include media-max(1140px) {
+	.col-3-2-1 {
+		width: 50%;
+	}
+}
+
+@include media-max(940px) {
+	.full-project-gallery {
+		padding-left: 0;
+    padding-right: 0;
+	}
+	.gallery-img {
+		padding: 0 0 0 3*$em;
+		& img {
+			display: none;
+		}
+		& .gallery-list {
+			position: relative;
+			width: 100%;
+			max-height: 440px;
+			& li {
+				&:hover {
+					&:before, &:after {
+						opacity: 0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@include media-max(860px) {
+	.col-2-1 {
+		display: block;
+		width: 100%;
+	}
+	.col-3-2-1 {
+		display: block;
+		width: 100%;
+	}
+	.skills-list {
+		box-shadow: none;
+		border-bottom: .2*$em solid $dimBlue;
+	}
+}
+
+@include media-max(670px) {
+	.shrink-pad-mobile {
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#page-view {
+		padding: .5*$em;
+	}
+	.mobile-menu {
+		display: block;
+		position: fixed;
+		top: .5*$em;
+		right: .5*$em;
+		padding: .25*$em;
+		font-weight: bold;
+		border-radius: 0 0 0 .25*$em;
+		box-shadow: 0 0 0 2px $midBlue;
+		color: $darkBlue;
+		background-color: $veryLightBlue;
+		font-size: 1.2*$em;
+		cursor: pointer;
+		& .close {
+			display: none;
+		}
+	}
+	#nav-body {
+		width: 100%;
+		padding: .5*$em;
+		@include transformT(100%, 0);
+		&.open {
+			@include transformT(0%, 0);
+			& + .mobile-menu {
+				& .close {
+					display: inline;
+				}
+				& .open {
+					display: none;
+				}
+			}
+		}
+		.nav-container {
+			padding: 5*$em 0 4.5*$em;
+			& .logo {
+				height: 5*$em;
+				background-size: contain;
+			}
+		}
+	}
+	.show-later-mobile {
+		overflow: hidden;
+		&:not(.open) {
+			height: 0;
+			& + * .show-more-mobile .less {
+				display: none;
+			}
+		}
+		&.open {
+			& + * .show-more-mobile .more {
+				display: none;
+			}
+		}
+	}
+	.show-more-mobile {
+		display: inherit;
+	}
+}
