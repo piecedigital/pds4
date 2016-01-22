@@ -415,7 +415,7 @@ a {
         right: -33.6px; }
     #nav-body > .nav-container .footer {
       position: absolute;
-      bottom: 16px;
+      bottom: 0px;
       left: 0;
       width: 100%;
       padding: 0 8px 0 0; }
@@ -428,7 +428,7 @@ a {
         #nav-body > .nav-container .footer p .social-icons {
           display: inline-block;
           height: 32px;
-          padding: 4px; }
+          padding: 3.2px 16px; }
           #nav-body > .nav-container .footer p .social-icons a {
             display: inline-block;
             height: 100%; }
@@ -511,7 +511,7 @@ a {
     display: block;
     width: 100%;
     max-width: 480px;
-    padding: 3.2px;
+    padding: 8px;
     border: 1px solid #017ab1;
     border-radius: 8px;
     color: #004B6E;
