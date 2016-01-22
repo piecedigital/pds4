@@ -492,6 +492,7 @@
 					},
 					{
 						projectName: "Guide Magazine Chat App",
+						refName: "gcc-app",
 						img: null,
 						desc: "This project was created for a small organization by the name of Guide Magazine. They hold weekly chat sessions online. I offered my skills to help them out a bit by creating a chat application to replace their current Java applet. The app needed to carry over and improve all of the necessary parts of their previous app, and also add some nifty new ones. The goal was to create a customized, functional, and scalable web app. Linked below is a video demo of the project (the video may be of the project in an older but stable state).",
 						skillsApplied: {
@@ -506,6 +507,7 @@
 					{
 						projectName: "LayoutCSS",
 						img: null,
+						refName: "layoutcss",
 						desc: "LayoutCSS is a fairly verbose and literal CSS framework, designed to make sense semantically. LayoutCSS started off as my own personal CSS framework for quickly piecing together a website layout. I found it to be very clear and verbose so I'm releasing it now as an open-source option for those who might like that aspect of a CSS framework.",
 						skillsApplied: {
 							languages: ["HTML", "CSS"],
@@ -517,6 +519,7 @@
 					{
 						projectName: "TutoPop",
 						img: null,
+						refName: "tutopop",
 						desc: "TutoPop is a jQuery-based tool for creating simple popup tutorials to introduce your users the interface of your website or web app! ",
 						skillsApplied: {
 							languages: ["JavaScript", "JQuery", "HTML", "CSS"],
@@ -526,6 +529,7 @@
 					},
 					{
 						projectName: "Twitch Exe",
+						refName: "twitch-exe",
 						img: "public/images/small_twitch_exe_previews/twitch_4.png",
 						desc: "Twitch Exe is a desktop application for watching livestreams from Twitch.tv. It's built using Electron. It provides and asynchronous viewing experience so you don't have to refresh or stop watching a streamer just to see who's online! It supports multi-stream viewing and it also supports multitwitch.tv links! ",
 						skillsApplied: {
@@ -542,6 +546,7 @@
 					},
 					{
 						projectName: "ShoehornJS",
+						refName: "shoehornjs",
 						img: null,
 						desc: "ShoehornJS is a simple and small JavaScript tool for creating type safety. It insures that your variables are being assigned the corrent datatypes and provides a way of improving your error handling for these datatypes.",
 						skillsApplied: {
@@ -551,13 +556,11 @@
 					}
 				];
 
-				var projectsReference = {
-					"gcc-app": 3,
-					"layoutcss": 4,
-					"tutopop": 5,
-					"twitch-exe": 6,
-					"shoehornjs": 7
-				};
+				var projectsReference = {};
+				projects.map(function(elem, ind) {
+					if(elem.refName) projectsReference[elem.refName] = ind;
+				});
+
 				var parseProjectIndex = function(key) {
 					return ( isNaN(parseInt(key)) ) ? projectsReference[key] : parseInt(key);
 				};
