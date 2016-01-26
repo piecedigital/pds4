@@ -75,7 +75,7 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 
 .top-pad-1_0 { padding-top: 16px; }
 
-.scrollable { overflow: auto; height: 100%; }
+.scrollable { overflow-x: hidden; overflow-y: auto; height: 100%; }
 
 .hero { position: relative; height: 100%; }
 .hero:before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("../images/piecedigital-greyscale.png"); background-size: cover; opacity: .4; pointer-events: none; }
