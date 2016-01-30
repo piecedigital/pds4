@@ -358,6 +358,8 @@
 			<div class="mobile-menu">
 				<span class="open">&lt; </span>MENU<span class="close"> &gt;</span>
 			</div>
+			<div class="mobile-image-view"></div>
+			<div class="full-image-view"></div>
 		</div>
 		<script type="text/javascript" src="public/js/jquery-1.11.2.min.js"></script>
 		<script>
@@ -393,8 +395,6 @@
 		</script>
 		<script>
 			var goToPage = function(page) {
-				page.stopPropagation();
-				page.preventDefault();
 				$("#content-body").attr("class", (typeof page === "string") ? page : $(this).attr("href").stripSearch());
 			};
 			$(document).ready(function() {
@@ -428,7 +428,6 @@
 
 					if(clearArray.indexOf(false) >= 0) {
 						e.stopPropagation();
-						e.preventDefault();
 						clearArray.map(function(elem, ind) {
 							if(elem === false) {
 								if(ind === 0) {
@@ -448,18 +447,15 @@
 
 				$(".show-more-mobile").on("touchend click", function(e) {
 					e.stopPropagation();
-					e.preventDefault();
 					$(".show-later-mobile").toggleClass("open");
 				});
 
 				$(".mobile-menu").on("touchend click", function(e) {
 					e.stopPropagation();
-					e.preventDefault();
 					$("#nav-body").toggleClass("open");
 				});
 				$(".nav-item").on("touchend click", function(e) {
 					e.stopPropagation();
-					e.preventDefault();
 					$("#nav-body").removeClass("open");
 				});
 			});
@@ -618,14 +614,23 @@
 						"Other";*/
 				};
 
+				$(".mobile-image-view").on("click", function() {
+					$(this).removeClass("open");
+				});
+				$(document).on("click", ".gallery-img > img", function() {
+					$(".full-image-view").addClass("open").css("background-image", "url(" + $(this).attr("src") + ")");
+				});
+				$(".full-image-view").on("click", function() {
+					$(this).removeClass("open");
+				});
 				var populateFullProject = function(projIndex) {
 					var openImage = function(e) {
 						e.stopPropagation();
-						e.preventDefault();
 						var imgIndex = parseInt($(this).data("index")),
 							projIndex = parseInt($(this).data("project"));
 
-						$(".gallery-img > img").attr("src", projects[projIndex].galleryFullSize[imgIndex])
+						$(".gallery-img > img").attr("src", projects[projIndex].galleryFullSize[imgIndex]);
+						$(".mobile-image-view").addClass("open").css("background-image", "url(" + projects[projIndex].galleryFullSize[imgIndex] + ")");
 					};
 
 					$(".full-project-name").text( projects[projIndex].projectName );
@@ -728,19 +733,11 @@
 
 				$(document).on("touchend click", ".to-project", function(e) {
 					e.stopPropagation();
-					e.preventDefault();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
 					//if(!location.href.match("file:///")) history.pushState({}, "", location.href.replace(/\#[\w\-]*/, "#full-project?project=" + index) )
 					populateFullProject( parseInt( index ) );
 				});
-			});
-		</script>
-		<script>
-			$(document).on("touchend click", "a", function(e) {
-				e.stopPropagation();
-				e.preventDefault();
-				location.href = e.target.attributes["href"].value;
 			});
 		</script>
 	</body>
