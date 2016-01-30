@@ -393,6 +393,7 @@
 		</script>
 		<script>
 			var goToPage = function(page) {
+				page.stopPropagation();
 				page.preventDefault();
 				$("#content-body").attr("class", (typeof page === "string") ? page : $(this).attr("href").stripSearch());
 			};
@@ -426,6 +427,7 @@
 					));
 
 					if(clearArray.indexOf(false) >= 0) {
+						e.stopPropagation();
 						e.preventDefault();
 						clearArray.map(function(elem, ind) {
 							if(elem === false) {
@@ -445,15 +447,18 @@
 				});
 
 				$(".show-more-mobile").on("touchend click", function(e) {
+					e.stopPropagation();
 					e.preventDefault();
 					$(".show-later-mobile").toggleClass("open");
 				});
 
 				$(".mobile-menu").on("touchend click", function(e) {
+					e.stopPropagation();
 					e.preventDefault();
 					$("#nav-body").toggleClass("open");
 				});
 				$(".nav-item").on("touchend click", function(e) {
+					e.stopPropagation();
 					e.preventDefault();
 					$("#nav-body").removeClass("open");
 				});
@@ -615,6 +620,7 @@
 
 				var populateFullProject = function(projIndex) {
 					var openImage = function(e) {
+						e.stopPropagation();
 						e.preventDefault();
 						var imgIndex = parseInt($(this).data("index")),
 							projIndex = parseInt($(this).data("project"));
@@ -721,6 +727,7 @@
 				}
 
 				$(document).on("touchend click", ".to-project", function(e) {
+					e.stopPropagation();
 					e.preventDefault();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
@@ -731,6 +738,7 @@
 		</script>
 		<script>
 			$(document).on("touchend click", "a", function(e) {
+				e.stopPropagation();
 				e.preventDefault();
 				location.href = e.target.attributes["href"].value;
 			});
