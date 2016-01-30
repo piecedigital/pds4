@@ -393,7 +393,7 @@
 		</script>
 		<script>
 			var goToPage = function(page) {
-				page.stopPropagation();
+				page.preventDefault();
 				$("#content-body").attr("class", (typeof page === "string") ? page : $(this).attr("href").stripSearch());
 			};
 			$(document).ready(function() {
@@ -445,16 +445,16 @@
 				});
 
 				$(".show-more-mobile").on("touchend click", function(e) {
-					e.stopPropagation();
+					e.preventDefault();
 					$(".show-later-mobile").toggleClass("open");
 				});
 
 				$(".mobile-menu").on("touchend click", function(e) {
-					e.stopPropagation();
+					e.preventDefault();
 					$("#nav-body").toggleClass("open");
 				});
 				$(".nav-item").on("touchend click", function(e) {
-					e.stopPropagation();
+					e.preventDefault();
 					$("#nav-body").removeClass("open");
 				});
 			});
@@ -615,7 +615,7 @@
 
 				var populateFullProject = function(projIndex) {
 					var openImage = function(e) {
-						e.stopPropagation();
+						e.preventDefault();
 						var imgIndex = parseInt($(this).data("index")),
 							projIndex = parseInt($(this).data("project"));
 
@@ -721,7 +721,7 @@
 				}
 
 				$(document).on("touchend click", ".to-project", function(e) {
-					e.stopPropagation();
+					e.preventDefault();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
 					//if(!location.href.match("file:///")) history.pushState({}, "", location.href.replace(/\#[\w\-]*/, "#full-project?project=" + index) )
@@ -731,6 +731,7 @@
 		</script>
 		<script>
 			$(document).on("touchend click", "a", function(e) {
+				e.preventDefault();
 				location.href = e.target.attributes["href"].value;
 			});
 		</script>
