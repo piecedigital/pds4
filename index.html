@@ -390,7 +390,6 @@
 			// projects and their slides
 			$(document).ready(function() {
 				if(location.hash) $("#content-body").attr("class", location.hash.stripSearch() );
-				if(!location.href.match("file:///")) history.replaceState({}, "", location.href.replace("index.html", "index") );
 			});
 		</script>
 		<script>
