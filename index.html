@@ -452,6 +452,7 @@
 
 				$(".mobile-menu").on("touchend click", function(e) {
 					e.stopPropagation();
+					e.preventDefault();
 					$("#nav-body").toggleClass("open");
 				});
 				$(".nav-item").on("touchend click", function(e) {
