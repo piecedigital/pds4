@@ -81,12 +81,12 @@
 									<li><span>NodeJS</span></li>
 								</ul><!--
 								--><ul class="skills-list col-3-2-1 align-top">
-									<h4 class="skill-title dim-blue-text font-size-1_2">JavaScript Libraries</h4>
+									<h4 class="skill-title dim-blue-text font-size-1_2">Libraries</h4>
 									<li><span>JQuery</span></li>
 									<li><span>ReactJS</span></li>
 								</ul><!--
 								--><ul class="skills-list col-3-2-1 align-top">
-									<h4 class="skill-title dim-blue-text font-size-1_2">JavaScript Frameworks</h4>
+									<h4 class="skill-title dim-blue-text font-size-1_2">Frameworks</h4>
 									<li><span>ExpressJS (for NodeJS)</span></li>
 									<li><span>AngularJS (basic)</span></li>
 									<li><span>Socket.IO</span></li>
@@ -97,6 +97,13 @@
 									<li><span>Windows Command-Line (Basic)</span></li>
 									<li><span>Linux Command-Line (Basic)</span></li>
 									<li><span><a href="http://electron.atom.io" target="_blank">Electron</a></span></li>
+								</ul><!--
+								--><ul class="skills-list col-3-2-1 align-top">
+									<h4 class="skill-title dim-blue-text font-size-1_2">Desire To Learn/In The Process Of Learning</h4>
+									<li><span>Ruby (Programming Language)</span></li>
+									<li><span>Rust (Programming Language)</span></li>
+									<li><span>PHP (Programming Language)</span></li>
+									<li><span>Jasmine (Testing Tool)</span></li>
 								</ul>
 							</div>
 						</div>
@@ -386,11 +393,12 @@
 		</script>
 		<script>
 			var goToPage = function(page) {
+				page.stopPropagation();
 				$("#content-body").attr("class", (typeof page === "string") ? page : $(this).attr("href").stripSearch());
 			};
 			$(document).ready(function() {
 
-				$(".go-to-page").on("click", goToPage);
+				$(".go-to-page").on("touchend click", goToPage);
 
 				$("#contact-form").on("submit", function(e) {
 					var self = this;
@@ -436,14 +444,17 @@
 					}
 				});
 
-				$(".show-more-mobile").on("click", function() {
+				$(".show-more-mobile").on("touchend click", function(e) {
+					e.stopPropagation();
 					$(".show-later-mobile").toggleClass("open");
 				});
 
-				$(".mobile-menu").on("click", function() {
+				$(".mobile-menu").on("touchend click", function(e) {
+					e.stopPropagation();
 					$("#nav-body").toggleClass("open");
 				});
-				$(".nav-item").on("click", function() {
+				$(".nav-item").on("touchend click", function(e) {
+					e.stopPropagation();
 					$("#nav-body").removeClass("open");
 				});
 			});
@@ -603,7 +614,8 @@
 				};
 
 				var populateFullProject = function(projIndex) {
-					var openImage = function() {
+					var openImage = function(e) {
+						e.stopPropagation();
 						var imgIndex = parseInt($(this).data("index")),
 							projIndex = parseInt($(this).data("project"));
 
@@ -663,7 +675,7 @@
 								$("<li>")
 									.attr("data-index", ind)
 									.attr("data-project", projIndex)
-									.bind("click", openImage)
+									.bind("touchend click", openImage)
 									.html(
 										$("<img>")
 											.attr("src", elem)
@@ -708,12 +720,18 @@
 					goToPage("full-project");
 				}
 
-				$(document).on("click", ".to-project", function() {
+				$(document).on("touchend click", ".to-project", function(e) {
+					e.stopPropagation();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
 					//if(!location.href.match("file:///")) history.pushState({}, "", location.href.replace(/\#[\w\-]*/, "#full-project?project=" + index) )
 					populateFullProject( parseInt( index ) );
 				});
+			});
+		</script>
+		<script>
+			$(document).on("touchend click", "a", function(e) {
+				location.href = e.target.attributes["href"].value;
 			});
 		</script>
 	</body>
