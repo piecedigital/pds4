@@ -458,6 +458,12 @@
 					e.stopPropagation();
 					$("#nav-body").removeClass("open");
 				});
+				$(document).on("touchend", "a", function(e) {
+					if(!location.href.match("file:///") && $(this).attr("href").match(/^#[.]*/)) {
+						history.pushState({}, "", location.href.replace(/\#[\w\-]*/, $(this).attr("href") ) );
+						$("#nav-body").removeClass("open");
+					}
+				});
 			});
 		</script>
 		<script>
