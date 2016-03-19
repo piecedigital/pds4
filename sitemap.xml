@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://piecedigital.net/</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#projects</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#full-project?project=gcc-app</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#full-project?project=twitch-exe</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#full-project?project=tutopop</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#full-project?project=layoutcss</loc>
+  </url>
+  <url>
+    <loc>http://piecedigital.net/#full-project?project=shoehornjs</loc>
+  </url>
+</urlset>
