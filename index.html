@@ -518,7 +518,7 @@
 						desc: "This project was created for a small organization by the name of Guide Magazine. They hold weekly chat sessions online. I offered my skills to help them out a bit by creating a chat application to replace their current Java applet. The app needed to carry over and improve all of the necessary parts of their previous app, and also add some nifty new ones. The goal was to create a customized, functional, and scalable web app. Linked below is a video demo of the project (the video may be of the project in an older but stable state).",
 						skillsApplied: {
 							languages: ["JavaScript", "HTML", "CSS"],
-							tools: ["NodeJS", "JQuery", "Sass"],
+							tools: ["NodeJS", "Sass"],
 							libraries: ["JQuery"],
 							frameworks: ["ExpressJS"],
 							other: ["Ajax", "Responsive Web Design"]
@@ -574,6 +574,20 @@
 							languages: ["JavaScript"]
 						},
 						links: ["[View On npm](https://www.npmjs.com/package/shoehornjs)", "[View Github Repo](http://github.com/piecedigital/shoehorn.js)"]
+					},
+					{
+						projectName: "Balance",
+						refName: "balance",
+						img: null,
+						desc: ["Balance is a simple-to-use web application that makes it easy to manage your money. Track where your money is coming from, where it's going, where it needs to go, and, ultimately, what goes in your pocket!", "As of the 22nd of March it is still in the planning phase, however I've decided to publish the expereince to my protfolio as I think that a history of progression is just as important as the finished product. Plus it'll force me to complete it!"],
+						skillsApplied: {
+							languages: ["JavaScript", "HTML", "CSS"],
+							tools: ["NodeJS", "Sass", "BcryptJS", "csurf", "MongoDB", "EJS", "Gulp", "Jasmine"],
+							libraries: ["[LayoutCSS](http://npmjs.com/package/layoutcss)", "JQuery", "ReactJS"],
+							frameworks: ["ExpressJS"],
+							other: ["Ajax", "Responsive Web Design"]
+						},
+						links: ["[View On Github](https://www.github.com/piecedigital/balance)"]
 					}
 				];
 
@@ -643,7 +657,16 @@
 					};
 
 					$(".full-project-name").text( projects[projIndex].projectName );
-					$(".full-project-desc").text( projects[projIndex].desc );
+					$(".full-project-desc").html( (function(){
+						var description = projects[projIndex].desc;
+						if(typeof description === "string") {
+							return description;
+						} else {
+							return description.map(function(elem, ind, arr) {
+								return elem + ( (ind === arr.length -1) ? "" : "<br><br>" );
+							}).join("");
+						}
+					}()) );
 
 					var projAlias = projects[projIndex].skillsApplied,
 						completeElements = [];
