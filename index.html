@@ -43,6 +43,7 @@
 								<p>
 									My name Darryl Dixon. I like to go by Piece Digital. I'm a self-taught web developer from Virginia. I'm passionate about creating many types of web-based products, tools and experiences, and ensuring a great experience for the end user.
 								</p>
+								<input id="show-later-trigger" type="checkbox" name="name" value="">
 								<p class="show-later-mobile">
 									Early on in my life I realized I had a deep fascination with technology. As an introvert I tended to want to stay on the computer rather than socializing. I was pretty good at being a ghost.
 									<br><br>
@@ -53,9 +54,9 @@
 									Now I am pursuing web development as a my primary career. Since then I have not stopped learning and creating, getting my hands into any code almost everyday, and I'm not overexagerating when I say I love the experience. I don't believe in perfection at all times but trying your best to achieve something functional and practical. Ergo, I'm pretty proud of what I've done so far and will continue to improve on what I do and can do.
 								</p>
 								<div class="font-size-1_2 center-justify">
-									<div class="btn-normal show-more-mobile pointer">
+									<label for="show-later-trigger" class="btn-normal show-more-mobile pointer">
 										Read <span class="more">More</span><span class="less">Less</span>
-									</div>
+									</label>
 								</div>
 							</div>
 						</div>
@@ -447,11 +448,6 @@
 					}
 				});
 
-				$(".show-more-mobile").on("touchend click", function(e) {
-					e.stopPropagation();
-					$(".show-later-mobile").toggleClass("open");
-				});
-
 				$(".mobile-menu").on("touchend click", function(e) {
 					e.stopPropagation();
 					e.preventDefault();
@@ -763,7 +759,7 @@
 					goToPage("full-project");
 				}
 
-				$(document).on("touchend click", ".to-project", function(e) {
+				$(document).on("touchstart click", ".to-project", function(e) {
 					e.stopPropagation();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");

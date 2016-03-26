@@ -343,7 +343,7 @@ a {
 	}
 }
 #nav-body {
-	position: fixed; 
+	position: fixed;
 	top: 0;
 	right: 0;
 	width: 15*$em;
@@ -397,7 +397,7 @@ a {
 				top: .25*$em;
 				width: 3*$em;
 				height: 3*$em;
-				
+
 				overflow: hidden;
 				&.left-bump {
 					left: 0*$em;
@@ -446,7 +446,7 @@ a {
 						}
 					}
 					&:hover {
-						
+
 					}
 				}
 			}
@@ -869,14 +869,19 @@ a {
 	}
 	.show-later-mobile {
 		overflow: hidden;
-		&:not(.open) {
-			height: 0;
-			& + * .show-more-mobile .less {
+	}
+	#show-later-trigger {
+		display: none;
+		&:not(:checked) {
+			& + .show-later-mobile {
+				height: 0;
+			}
+			& ~ div .show-more-mobile .less {
 				display: none;
 			}
 		}
-		&.open {
-			& + * .show-more-mobile .more {
+		&:checked {
+			& ~ div .show-more-mobile .more {
 				display: none;
 			}
 		}

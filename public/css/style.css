@@ -251,9 +251,10 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
   #nav-body .nav-container { padding: 80px 0 72px; }
   #nav-body .nav-container .logo { height: 80px; background-size: contain; }
   .show-later-mobile { overflow: hidden; }
-  .show-later-mobile:not(.open) { height: 0; }
-  .show-later-mobile:not(.open) + * .show-more-mobile .less { display: none; }
-  .show-later-mobile.open + * .show-more-mobile .more { display: none; }
+  #show-later-trigger { display: none; }
+  #show-later-trigger:not(:checked) + .show-later-mobile { height: 0; }
+  #show-later-trigger:not(:checked) ~ div .show-more-mobile .less { display: none; }
+  #show-later-trigger:checked ~ div .show-more-mobile .more { display: none; }
   .show-more-mobile { display: inherit; }
   .project-box:before, .project-box:after { content: initial; } }
 
