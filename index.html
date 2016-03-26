@@ -565,7 +565,7 @@
 						$("<a>")
 							.addClass("project-box to-project")
 							.attr("data-index", index)
-							.attr("href", "#full-project?project=" + index)
+							.attr("href", "#full-project?project=" + projects[index].refName || index)
 							.css("background-image", "url("+((img) ? img : "public/images/1logo.png")+")")
 							.html(
 							$("<h4>")

@@ -535,13 +535,10 @@ a {
 	padding: 1*$em;
 	margin: 1*$em 0;
 	// min-height: 12*$em;
-	box-shadow:
-		-.2*$em 0 0 0 $dimBlue,
-		inset .2*$em 0 0 0 $dimBlue;
-	&:nth-child(2n) {
+	&:nth-child(3n), &:nth-child(3n+2) {
 		box-shadow:
-			.2*$em 0 0 0 $dimBlue,
-			inset -.2*$em 0 0 0 $dimBlue;
+			-.2*$em 0 0 0 $dimBlue,
+			inset .2*$em 0 0 0 $dimBlue;
 	}
 	& .skill-title {
 		&:before {

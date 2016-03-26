@@ -189,8 +189,8 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 .title { margin: 0 16px 3.2px; color: #017ab1; box-shadow: 0 3.2px 0 0 #017ab1; }
 .title.dark { box-shadow: 0 3.2px 0 0 #004B6E; }
 
-.skills-list { padding: 16px; margin: 16px 0; box-shadow: -3.2px 0 0 0 #017ab1, inset 3.2px 0 0 0 #017ab1; }
-.skills-list:nth-child(2n) { box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; }
+.skills-list { padding: 16px; margin: 16px 0; }
+.skills-list:nth-child(3n), .skills-list:nth-child(3n+2) { box-shadow: -3.2px 0 0 0 #017ab1, inset 3.2px 0 0 0 #017ab1; }
 .skills-list .skill-title:before { content: ": "; font-weight: bold; }
 .skills-list li { margin: 8px 0 0 16px; list-style: disc; }
 
