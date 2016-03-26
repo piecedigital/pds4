@@ -402,7 +402,7 @@
 			};
 			$(document).ready(function() {
 
-				$(".go-to-page").on("touchend click", goToPage);
+				$(".go-to-page").on("click", goToPage);
 
 				$("#contact-form").on("submit", function(e) {
 					var self = this;
@@ -448,16 +448,16 @@
 					}
 				});
 
-				$(".mobile-menu").on("touchend click", function(e) {
+				$(".mobile-menu").on("click", function(e) {
 					e.stopPropagation();
 					e.preventDefault();
 					$("#nav-body").toggleClass("open");
 				});
-				$(".nav-item").on("touchend click", function(e) {
+				$(".nav-item").on("click", function(e) {
 					e.stopPropagation();
 					$("#nav-body").removeClass("open");
 				});
-				$(document).on("touchend", "a", function(e) {
+				$(document).on("", "a", function(e) {
 					if(!location.href.match("file:///") && $(this).attr("href").match(/^#[.]*/)) {
 						history.pushState({}, "", location.href.replace(/\#[\w\-]*/, $(this).attr("href") ) );
 						$("#nav-body").removeClass("open");
@@ -714,7 +714,7 @@
 								$("<li>")
 									.attr("data-index", ind)
 									.attr("data-project", projIndex)
-									.bind("touchend click", openImage)
+									.bind("click", openImage)
 									.html(
 										$("<img>")
 											.attr("src", elem)
@@ -759,7 +759,7 @@
 					goToPage("full-project");
 				}
 
-				$(document).on("touchstart click", ".to-project", function(e) {
+				$(document).on("click", ".to-project", function(e) {
 					e.stopPropagation();
 					var index = parseProjectIndex($(this).data("index"));
 					goToPage("full-project");
