@@ -132,6 +132,7 @@ a {
 .scrollable {
 	overflow-x: hidden;
 	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
 	height: 100%;
 }
 
@@ -239,6 +240,12 @@ a {
 .inline-block {
 	display: inline-block;
 }
+.hidden {
+	display: none;
+}
+.hidden-force{
+	display: none !important;
+}
 
 .pointer {
 	cursor: pointer;
@@ -306,7 +313,8 @@ a {
 		width: 100%;
 		height: 100%;
 		background-color: $veryLightBlue;
-		overflow: auto;
+		overflow: scroll;
+		-webkit-overflow-scrolling: touch;
 		transition: all .5s ease-in-out;
 		&.home-view {
 			top: 0;
@@ -526,12 +534,14 @@ a {
 .skills-list {
 	padding: 1*$em;
 	margin: 1*$em 0;
-	min-height: 12*$em;
+	// min-height: 12*$em;
 	box-shadow:
-		.2*$em 0 0 0 $dimBlue,
-		inset -.2*$em 0 0 0 $dimBlue;
-	&:nth-child(3n) {
-		box-shadow: none;
+		-.2*$em 0 0 0 $dimBlue,
+		inset .2*$em 0 0 0 $dimBlue;
+	&:nth-child(2n) {
+		box-shadow:
+			.2*$em 0 0 0 $dimBlue,
+			inset -.2*$em 0 0 0 $dimBlue;
 	}
 	& .skill-title {
 		&:before {
@@ -715,6 +725,9 @@ a {
 		}
 	}
 }
+#show-later-trigger {
+	display: none;
+}
 .show-more-mobile {
 	display: none;
 }
@@ -754,13 +767,15 @@ a {
 		width: 50%;
 	}
 	.skills-list {
-		&:nth-child(odd) {
-		box-shadow:
-			.2*$em 0 0 0 $dimBlue,
-			inset -.2*$em 0 0 0 $dimBlue;
-		}
 		&:nth-child(even) {
-			box-shadow: none;
+		box-shadow:
+			-.2*$em 0 0 0 $dimBlue,
+			inset .2*$em 0 0 0 $dimBlue;
+		}
+		&:nth-child(odd) {
+			box-shadow:
+				.2*$em 0 0 0 $dimBlue,
+				inset -.2*$em 0 0 0 $dimBlue;
 		}
 	}
 }
@@ -871,7 +886,6 @@ a {
 		overflow: hidden;
 	}
 	#show-later-trigger {
-		display: none;
 		&:not(:checked) {
 			& + .show-later-mobile {
 				height: 0;

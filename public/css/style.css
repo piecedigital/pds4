@@ -75,7 +75,7 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 
 .top-pad-1_0 { padding-top: 16px; }
 
-.scrollable { overflow-x: hidden; overflow-y: auto; height: 100%; }
+.scrollable { overflow-x: hidden; overflow-y: auto; -webkit-overflow-scrolling: touch; height: 100%; }
 
 .hero { position: relative; height: 100%; }
 .hero:before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("../images/piecedigital-greyscale.png"); background-size: cover; opacity: .4; pointer-events: none; }
@@ -131,6 +131,10 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 
 .inline-block { display: inline-block; }
 
+.hidden { display: none; }
+
+.hidden-force { display: none !important; }
+
 .pointer { cursor: pointer; }
 
 .btn-normal { display: inline-block; position: relative; padding: 8px; border: none; border-radius: 8px; color: #004B6E; background-color: #9be0ff; font-weight: bold; cursor: pointer; }
@@ -146,7 +150,7 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 #page-view { position: relative; padding: 8px 256px 8px 8px; height: 100vh; width: 100vw; }
 
 #content-body { position: relative; overflow: hidden; width: 100%; height: 100%; border-radius: 8px; }
-#content-body > div { position: absolute; left: 0; width: 100%; height: 100%; background-color: #e8f8ff; overflow: auto; transition: all .5s ease-in-out; }
+#content-body > div { position: absolute; left: 0; width: 100%; height: 100%; background-color: #e8f8ff; overflow: scroll; -webkit-overflow-scrolling: touch; transition: all .5s ease-in-out; }
 #content-body > div.home-view { top: 0; }
 #content-body > div.projects-view { top: 100vh; }
 #content-body > div.full-project-view { top: 200vh; }
@@ -185,8 +189,8 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 .title { margin: 0 16px 3.2px; color: #017ab1; box-shadow: 0 3.2px 0 0 #017ab1; }
 .title.dark { box-shadow: 0 3.2px 0 0 #004B6E; }
 
-.skills-list { padding: 16px; margin: 16px 0; min-height: 192px; box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; }
-.skills-list:nth-child(3n) { box-shadow: none; }
+.skills-list { padding: 16px; margin: 16px 0; box-shadow: -3.2px 0 0 0 #017ab1, inset 3.2px 0 0 0 #017ab1; }
+.skills-list:nth-child(2n) { box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; }
 .skills-list .skill-title:before { content: ": "; font-weight: bold; }
 .skills-list li { margin: 8px 0 0 16px; list-style: disc; }
 
@@ -217,6 +221,8 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 .gallery-img .gallery-list li:hover:before { opacity: .8; }
 .gallery-img .gallery-list li:hover:after { opacity: 1; }
 
+#show-later-trigger { display: none; }
+
 .show-more-mobile { display: none; }
 
 .mobile-menu { display: none; }
@@ -228,8 +234,8 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
 @media screen and (max-width: 1670px) { .col-5-4-3-2-1 { width: 25%; } }
 @media screen and (max-width: 1400px) { .col-4-3-2-1, .col-5-4-3-2-1 { width: 33.3333333%; } }
 @media screen and (max-width: 1140px) { .col-3-2-1, .col-4-3-2-1, .col-5-4-3-2-1 { width: 50%; }
-  .skills-list:nth-child(odd) { box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; }
-  .skills-list:nth-child(even) { box-shadow: none; } }
+  .skills-list:nth-child(even) { box-shadow: -3.2px 0 0 0 #017ab1, inset 3.2px 0 0 0 #017ab1; }
+  .skills-list:nth-child(odd) { box-shadow: 3.2px 0 0 0 #017ab1, inset -3.2px 0 0 0 #017ab1; } }
 @media screen and (max-width: 940px) { .full-project-gallery { padding-left: 0; padding-right: 0; }
   .gallery-img { padding: 0 0 0 48px; }
   .gallery-img img { display: none; }
@@ -251,7 +257,6 @@ a[target="_blank"]:not(.no-symbol):before { content: "\2924 "; }
   #nav-body .nav-container { padding: 80px 0 72px; }
   #nav-body .nav-container .logo { height: 80px; background-size: contain; }
   .show-later-mobile { overflow: hidden; }
-  #show-later-trigger { display: none; }
   #show-later-trigger:not(:checked) + .show-later-mobile { height: 0; }
   #show-later-trigger:not(:checked) ~ div .show-more-mobile .less { display: none; }
   #show-later-trigger:checked ~ div .show-more-mobile .more { display: none; }
