@@ -126,8 +126,8 @@
 									<h3 class="dark-grey-text font-size-0_8">April 2016 - Present</h3>
 								</div><!--
 								--><ul class="job-description">
-									<li>Create server-side services for web application</li>
-									<li>Set up Ubuntu web servers</li>
+									<li>Create Node-based web services for a web application, such as file processing and sending emails</li>
+									<li>Set up remote Ubuntu web servers</li>
 									<li>Collaborate to structure and improve data structures</li>
 								</ul>
 							</div>
@@ -202,9 +202,9 @@
 								<p class="show-later-mobile">
 									Early on in my life I realized I had a deep fascination with technology. As an introvert I tended to want to stay on the computer rather than socializing. I was pretty good at being a ghost.
 									<br><br>
-									When I around 13 years old I started to get into programming games. I started with what was known as Game Maker, now known as <a href="http://yoyogames.com" target="_blank">Game Maker Studio</a>. It was a drag-n-drop game creation programming that made game development simple and easy. After a while of programming with the drag-n-drop feature I started to get into writig my own code. Simple code but I write it. Game Maker had (or has) this tool for creating libraries - pre-written code that can be exported as drag-n-drop tools. I started to write my own libraries, but only for myself.
+									When I around 13 years old I started to get into programming games. I started with what was known as Game Maker, now known as <a href="http://yoyogames.com" target="_blank">Game Maker Studio</a>. It was a drag-n-drop game creation programming that made game development simple and easy. After a while of programming with the drag-n-drop feature I started to get into writig my own code. Simple code, but I write it. Game Maker had (or has) this tool for creating libraries - pre-written code that can be exported as drag-n-drop tools. I even started writing my own libraries.
 									<br><br>
-									Fast-forward 6 years, 2014, I'm getting into graphic design. I started off doing social media design, then moved onto logo design. From there I began to get into web design. I designed my first website, a personal website. At that point I wanted to make it a real thing. October 5th, I began building my own personal website, which took about 2 weeks. I continued to make websites, joined the <a href="http://freecodecamp.com" target="_blank">Free Code Camp</a> community, and built up my skills to be a full-stack web developer.
+									Fast-forward 6 years, 2014, I was getting into graphic design. I started off doing social media design, moved onto logo design, and then I got into web design. I designed my first website, a personal website. At that point I wanted to make it a real website. October 5th, I began building my own personal website, which took about 2 weeks. I continued to make websites, joined the <a href="http://freecodecamp.com" target="_blank">Free Code Camp</a> community, and built up my skills to be a full-stack web developer.
 									<br><br>
 									Now I am pursuing web development as a my primary career. Since then I have not stopped learning and creating, getting my hands into any code almost everyday, and I'm not overexagerating when I say I love the experience. I don't believe in perfection at all times but trying your best to achieve something functional and practical. Ergo, I'm pretty proud of what I've done so far and will continue to improve on what I do and can do.
 								</p>
@@ -261,7 +261,7 @@
 											<input type="email" name="email" id="email" min="5" placeholder="jane.doe@email.com">
 										</div>
 										<div class="y-pad-0_5">
-											<label for="message">Message</label>
+											<label for="message">Message - <span class="body-count">0</span>/30</label>
 											<textarea type="textarea" rows="6" name="body" id="message"></textarea>
 										</div>
 										<button class="btn-normal" type="submit">SEND</button>
@@ -360,7 +360,7 @@
 					</div>
 					<div class="footer">
 						<p>
-							&copy; Copyright 2016, Piece Digital
+							2016, Piece Digital
 						</p>
 						<p>
 							<span class="social-icons">
@@ -427,12 +427,16 @@
 
 				$(".go-to-page").on("click", goToPage);
 
+				$(".body-count").text( $("#message").val().length );
+				$(document).on("ready keyup", "#message", function() {
+					$(".body-count").text( $(this).val().length );
+				});
+
 				$("#contact-form").on("submit", function(e) {
 					var self = this;
 					$(".err-msg").html("");
 
-					var clearArray = [],
-						toBeCorrect = 3;
+					var clearArray = [];
 
 					String.prototype.replaceEndSpaces = function() {
 						return this.replace(/^\s*/, "").replace(/\s*$/, "");
@@ -453,7 +457,7 @@
 					));
 
 					if(clearArray.indexOf(false) >= 0) {
-						e.stopPropagation();
+						e.preventDefault();
 						clearArray.map(function(elem, ind) {
 							if(elem === false) {
 								if(ind === 0) {
