@@ -534,7 +534,7 @@
 					{
 						projectName: ["Twitch Exe", "An Electron Desktop App"],
 						refName: "twitch-exe",
-						img: "public/images/small_twitch_exe_previews/twitch_4.png",
+						img: "public/images/small_twitch_exe_previews/4.png",
 						desc: "Twitch Exe is a desktop application, created in Electron, for watching livestreams from Twitch.tv. It provides and asynchronous viewing experience so you don't have to refresh or stop watching a streamer just to see who's online! It supports multi-stream viewing, which multitwitch.tv links will work to create!",
 						skillsApplied: {
 							languages: ["HTML", "CSS3", "JavaScript"],
@@ -545,8 +545,7 @@
 						},
 						links: ["[YouTube Video Demo](https://www.youtube.com/watch?v=pKBG3oNJup8)", "[Download 32bit .exe](http://www.mediafire.com/download/rq3rj8695dgzjyz/twitch-exe-win-32bit_v0.6.0.zip)",
 						"[Download 64bit .exe](http://www.mediafire.com/download/j25cq3ss2wkbck6/twitch-exe-win-64bit_v0.6.0.zip)"],
-						gallery: ["public/images/small_twitch_exe_previews/twitch_1.png", "public/images/small_twitch_exe_previews/twitch_2.png", "public/images/small_twitch_exe_previews/twitch_3.png", "public/images/small_twitch_exe_previews/twitch_4.png", "public/images/small_twitch_exe_previews/twitch_5.png", "public/images/small_twitch_exe_previews/twitch_6.png", "public/images/small_twitch_exe_previews/twitch_7.png"],
-						galleryFullSize: ["public/images/twitch_exe_previews/twitch_1.png", "public/images/twitch_exe_previews/twitch_2.png", "public/images/twitch_exe_previews/twitch_3.png", "public/images/twitch_exe_previews/twitch_4.png", "public/images/twitch_exe_previews/twitch_5.png", "public/images/twitch_exe_previews/twitch_6.png", "public/images/twitch_exe_previews/twitch_7.png"]
+						gallery: 7,
 					},
 					{
 						projectName: ["ShoehornJS", "A JavaScript Library"],
@@ -570,7 +569,10 @@
 							frameworks: ["ExpressJS"],
 							other: ["Ajax", "Responsive Web Design"]
 						},
-						links: ["[View On Github](https://www.github.com/piecedigital/cashulator)"]
+						links: ["[View On Github](https://www.github.com/piecedigital/cashulator)"],
+						// gallery: ["public/images/small_twitch_exe_previews/twitch_1.png", "public/images/small_twitch_exe_previews/twitch_2.png", "public/images/small_twitch_exe_previews/twitch_3.png", "public/images/small_twitch_exe_previews/twitch_4.png", "public/images/small_twitch_exe_previews/twitch_5.png", "public/images/small_twitch_exe_previews/twitch_6.png", "public/images/small_twitch_exe_previews/twitch_7.png"],
+						// galleryFullSize: ["public/images/twitch_exe_previews/twitch_1.png", "public/images/twitch_exe_previews/twitch_2.png", "public/images/twitch_exe_previews/twitch_3.png", "public/images/twitch_exe_previews/twitch_4.png", "public/images/twitch_exe_previews/twitch_5.png", "public/images/twitch_exe_previews/twitch_6.png", "public/images/twitch_exe_previews/twitch_7.png"]
+						gallery: 4
 					}
 				];
 
@@ -635,8 +637,8 @@
 						var imgIndex = parseInt($(this).data("index")),
 							projIndex = parseInt($(this).data("project"));
 
-						$(".gallery-img > img").attr("src", projects[projIndex].galleryFullSize[imgIndex]);
-						$(".mobile-image-view").addClass("open").css("background-image", "url(" + projects[projIndex].galleryFullSize[imgIndex] + ")");
+						$(".gallery-img > img").attr("src", "public/images/"+projects[projIndex].refName.replace(/[\s\-]/, "_")+"_previews/"+(imgIndex+1)+".png"); // projects[projIndex].galleryFullSize[imgIndex]
+						$(".mobile-image-view").addClass("open").css("background-image", "url(" + "public/images/"+projects[projIndex].refName.replace(/[\s\-]/, "_")+"_previews/"+(imgIndex+1)+".png" + ")");
 					};
 
 					$(".full-project-name").text( projects[projIndex].projectName[0] );
@@ -688,26 +690,26 @@
 							.addClass("gallery-img")
 							.html(
 								$("<img>")
-									.attr("src", projects[projIndex].galleryFullSize[0])
+									.attr("src", "public/images/"+projects[projIndex].refName.replace(/[\s\-]/, "_")+"_previews/"+1+".png")
 							)
 
 						var galleryList =
 						$("<ul>")
 							.addClass("gallery-list");
 
-						projects[projIndex].gallery.map(function(elem, ind) {
+						for(i = 0; i < projects[projIndex].gallery; i++) {
 							$(galleryList)
 							.append(
 								$("<li>")
-									.attr("data-index", ind)
+									.attr("data-index", i)
 									.attr("data-project", projIndex)
 									.bind("click", openImage)
 									.html(
 										$("<img>")
-											.attr("src", elem)
+											.attr("src", "public/images/small_"+projects[projIndex].refName.replace(/[\s\-]/g, "_")+"_previews/"+(i+1)+".png")
 									)
 							)
-						});
+						}
 
 						$(".full-project-gallery")
 							.html( $(galleryView).append( $(galleryList) ) )
