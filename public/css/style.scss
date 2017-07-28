@@ -361,7 +361,7 @@ a {
 		position: relative;
 		width: 100%;
 		height: 100%;
-		padding: 5.2*$em 0 4.5*$em;
+		padding: 5.2*$em 0 85px;
 		border-radius: 0 .5*$em .5*$em 0;
 		background-color: $veryLightBlue;
 		// overflow: auto;
@@ -471,6 +471,9 @@ a {
 				margin: 0;
 				color: $darkBlue;
 				text-align: center;
+				&:last-child {
+					padding: 1*$em 0;
+				}
 				& .social-icons {
 					display: inline-block;
 					height: 2*$em;
@@ -479,6 +482,8 @@ a {
 						display: inline-block;
 						height: 100%;
 						& img {
+							min-width: 29px;
+							min-height: 29px;
 							max-width: 100%;
 							max-height: 100%;
 						}
