@@ -587,7 +587,7 @@ a {
     font-size: 24px;
     opacity: 0; }
   .project-box:hover:before, .project-box:hover:after {
-    opacity: 1; }
+    opacity: .8; }
   .project-box:hover:before {
     width: 100%;
     height: 100%; }
