@@ -33,6 +33,30 @@
 							<h4 class="font-size-1_2 dim-blue-text bold">Web Developer</h4>
 						</div>
 					</div>
+					<!-- projects (links) -->
+					<div class="section">
+						<div class="page-wrap y-pad-4_0">
+							<div class="title max-width-18_0">
+								<h1 class="dim-blue-text font-size-2_0">Projects</h1>
+							</div>
+							<div class="y-pad-2_0">
+								<div class="job-title bold">
+									<h2 class="dark-blue-text x-pad-3_0 font-size-1_5 shrink-pad-mobile">Featured Projects</h2>
+								</div>
+								<div class="featured-projects x-pad-3_0 center-justify shrink-pad-mobile">
+								</div>
+							</div>
+							<div class="separator small dark-blue-bg"></div>
+							<div class="x-pad-3_0 y-pad-2_0">
+								<div class="font-size-1_2 center-justify">
+									<a href="#projects" class="btn-normal go-to-page">
+										View All Projects
+										<div class="arrow down"></div>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
 					<!-- skills -->
 					<div class="section white-bg">
 						<div class="page-wrap y-pad-4_0 shrink-pad-mobile">
@@ -86,30 +110,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- projects (links) -->
-					<div class="section">
-						<div class="page-wrap y-pad-4_0">
-							<div class="title max-width-18_0">
-								<h1 class="dim-blue-text font-size-2_0">Projects</h1>
-							</div>
-							<div class="y-pad-2_0">
-								<div class="job-title bold">
-									<h2 class="dark-blue-text x-pad-3_0 font-size-1_5 shrink-pad-mobile">Featured Projects</h2>
-								</div>
-								<div class="featured-projects x-pad-3_0 center-justify shrink-pad-mobile">
-								</div>
-							</div>
-							<div class="separator small dark-blue-bg"></div>
-							<div class="x-pad-3_0 y-pad-2_0">
-								<div class="font-size-1_2 center-justify">
-									<a href="#projects" class="btn-normal go-to-page">
-										View All Projects
-										<div class="arrow down"></div>
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
 					<!-- experience -->
 					<div class="section white-bg">
 						<div class="page-wrap y-pad-4_0 shrink-pad-mobile">
@@ -154,30 +154,6 @@
 							</div>
 						</div>
 					</div>
-					<!-- resumes -->
-					<div class="section white-bg">
-						<div class="page-wrap y-pad-4_0">
-							<div class="title dakr max-width-18_0">
-								<h1 class="dark-blue-text font-size-2_0">Download Resume</h1>
-							</div>
-							<div class="x-pad-3_0 y-pad-2_0">
-								<div class="font-size-1_2">
-									<div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
-										<a href="public/files/DarrylDixon-WebDevResume2.docx" class="btn-normal">
-											Download Resume<br>
-											DOCX (121 KB)
-										</a>
-									</div><!--
-									--><div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
-										<a href="public/files/DarrylDixon-WebDevResume2.pdf" class="btn-normal">
-											Download Resume<br>
-											PDF (39 KB)
-										</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 					<!-- contact me -->
 					<div class="section">
 						<div class="page-wrap y-pad-4_0">
@@ -209,6 +185,30 @@
 							</div>
 						</div>
 					</div>
+					<!-- resumes -->
+					<div class="section white-bg">
+						<div class="page-wrap y-pad-4_0">
+							<div class="title dakr max-width-18_0">
+								<h1 class="dark-blue-text font-size-2_0">Download Resume</h1>
+							</div>
+							<div class="x-pad-3_0 y-pad-2_0">
+								<div class="font-size-1_2">
+									<div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
+										<a href="public/files/DarrylDixon-WebDevResume2.docx" class="btn-normal">
+											Download Resume<br>
+											DOCX (121 KB)
+										</a>
+									</div><!--
+									--><div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
+									<a href="public/files/DarrylDixon-WebDevResume2.pdf" class="btn-normal">
+										Download Resume<br>
+										PDF (39 KB)
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 
 				</div>
 				<div class="projects-view">
@@ -743,7 +743,9 @@
 					{
 						projectName: ["\"Function Arena\"", "Code name for a game I'm developing"],
 						refName: "funcarena",
+						dontFeature: true,
 						img: null,
+						dontFeature: true,
 						desc: [
 							"I've always wanted to develop a game since I was younger. I am now pursuing that interest while blogging about it.",
 						],
@@ -810,16 +812,18 @@
 						)
 				};
 
-				projects.map(function(elem, index) {
-					var reverseIndex = projects.length - 1 - index;
-					var projectElement = new CreateProjectElement(reverseIndex, projects[reverseIndex].projectName, projects[reverseIndex].img);
-
+				var loopCount = 0;
+				for(index = projects.length-1; index >= 0; index--) {
+					// var index = projects.length - 1 - index;
+					var projectElement = new CreateProjectElement(index, projects[index].projectName, projects[index].img);
 					$(".projects-placement").append($(projectElement));
-					if(index < 3) {
-						var featuredProj = new CreateProjectElement(reverseIndex, projects[reverseIndex].projectName, projects[reverseIndex].img);
+
+					if(!projects[index].dontFeature && loopCount < 3) {
+						loopCount++;
+						var featuredProj = new CreateProjectElement(index, projects[index].projectName, projects[index].img);
 						$(".featured-projects").append($(featuredProj));
 					};
-				});
+				}
 
 				var figureOutTitle = function(key) {
 					return key.replace(key[0], key[0].toUpperCase());
