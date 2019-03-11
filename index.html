@@ -194,15 +194,15 @@
 							<div class="x-pad-3_0 y-pad-2_0">
 								<div class="font-size-1_2">
 									<div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
-										<a href="public/files/DarrylDixon-WebDevResume2.docx" class="btn-normal">
+										<a href="public/files/darryl-dixon-web-dev-resume.docx" class="btn-normal">
 											Download Resume<br>
-											DOCX (121 KB)
+											DOCX (9 KB)
 										</a>
 									</div><!--
 									--><div class="col-2-1 x-pad-1_0 y-pad-1_0 center-justify">
-									<a href="public/files/DarrylDixon-WebDevResume2.pdf" class="btn-normal">
+									<a href="public/files/darryl-dixon-web-dev-resume.pdf" class="btn-normal">
 										Download Resume<br>
-										PDF (39 KB)
+										PDF (46 KB)
 									</a>
 								</div>
 							</div>
@@ -348,6 +348,7 @@
 						.append(
 							$("<a>")
 							.attr({
+								"target": "_blank",
 								"href": options.jobSite
 							})
 							.text(options.jobName)
@@ -373,6 +374,23 @@
 			};
 
 			var experience = [
+				{
+					jobTitle: "Apprentice",
+					jobSite: "http://maxxpotential.com",
+					jobName: "Maxx Potential",
+					jobStart: "Sep 2018",
+					jobEnd: "Current",
+					description: [
+						"Tech consultancy based on apprenticeship.",
+						"Responsibilities include quality assurance, web development/WordPress site management.",
+						"Technical skills involved: HTML, CSS/Sass, JavaScript/TypeScript, SQL (Oracle and Microsoft variants), and Selenium",
+					],
+					jobTasks: [
+						"Quality Assurance",
+						"Web Development",
+						"WordPress Site Management",
+					],
+				},
 				{
 					jobTitle: "Web Developer",
 					jobSite: "http://kuv.io",
