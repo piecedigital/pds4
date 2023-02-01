@@ -509,7 +509,7 @@ a {
   top: 50%;
   left: 50%;
   margin: auto;
-  max-width: 18em;
+  max-width: 20em;
   @include transformT(-50%,-50%);
   text-align: center;
   &:before {
